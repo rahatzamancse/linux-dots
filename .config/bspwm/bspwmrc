@@ -1,0 +1,81 @@
+#! /bin/sh
+
+# Autostarts are moved to .config/bspwm/autostart
+$HOME/.config/bspwm/autostart &
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+#bspc monitor -d ws1 ws2 ws3 ws4 ws5 ws6 ws7 ws8 ws9 ws0
+#bspc monitor -d i ii iii iv v vi vii viii ix x
+#bspc monitor -d One Two Three Four Five Six Seven Eight Nine Ten
+#bspc monitor -d • • • • • • • • • •
+
+$HOME/.config/bspwm/scripts/reset-gap.sh
+
+# Creates window on left child in tree
+bspc config initial_polarity second_child
+# When there is only one tiled window, make it monocle
+bspc config single_monocle		true
+bspc config remove_disabled_monitors	true
+bspc config remove_unplugged_monitors	true
+## Honor size hints: do not make windows smaller than they wish to be
+bspc config honor_size_hints true 
+# bspc config merge_overlapping_monitors    true
+
+bspc config border_width         5
+bspc config split_ratio          0.52
+
+bspc config pointer_modifier     mod4
+bspc config pointer_action1      move
+bspc config pointer_action2      resize_side
+bspc config pointer_action3      resize_corner
+
+## coloring ####
+bspc config normal_border_color		"#111824"
+bspc config focused_border_color	"#FF8484"
+
+## Wallpaper for each workspace
+#bspc subscribe desktop_focus blabla
+
+# Auto start applications
+$HOME/.config/bspwm/startup-applications.sh &
+
+## Some applications specific predefined rules
+# bspc rule -a '*' follow=on state=pseudo_tiled
+# bspc rule -a kitty desktop='^1' follow=on state=pseudo_tiled
+# bspc rule -a gcolor2 state=floating center=true
+# bspc rule -a lxappearance state=floating center=true
+# bspc rule -a gmrun state=floating center=true
+# bspc rule -a lxterminal state=floating center=true sticky=true
+# bspc rule -a urxvt state=floating center=true
+# bspc rule -a viewnior state=floating center=true
+# bspc rule -a file-roller state=floating center=true
+# bspc rule -a floaterm state=floating center=true
+# bspc rule -a spotify state=pseudo_tiled # bspc rule -a nautilus state=pseudo_tiled
+# bspc rule -a skype state=pseudo_tiled
+# bspc rule -a file-roller state=pseudo_tiled
+# bspc rule -a transmission-gtk state=pseudo_tiled
+# bspc rule -a conky sticky=on manage=off lower=on
+# bspc rule -a astime sticky=on
+# bspc rule -a yad state=floating
+# bspc rule -a Docky layer=above border=off manage=on
+# bspc rule -a Plank layer=above border=off manage=on
+# bspc rule -a wbar layer=above
+# bspc rule -a dockbarx layer=above
+# bspc rule -a google-chrome-unstable private=on
+# bspc rule -a google-chrome-stable private=on
+# bspc rule -a chromium private=on
+# bspc rule -a firefox private=on
+# bspc rule -a midori private=on
+# bspc rule -a gnome-pie border=off manage=off
+# bspc rule -a wpa_gui state=pseudo_tiled
+# bspc rule -a libreoffice state=tiled
+# bspc rule -a '*:libreofficedev' state=tiled
+# bspc rule -a '*:soffice' state=tiled
+# bspc rule -a firefox desktop=I
+# bspc rule -a calibre desktop=II
+# bspc rule -a geany desktop=II
+# bspc rule -a deluge desktop=III
+# bspc rule -a 9menu border=off manage=off
+# bspc rule -a tint2 border=off manage=off
+# bspc desktop I --layout monocle
+# bspc desktop II --layout monocle

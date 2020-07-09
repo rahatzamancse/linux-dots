@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Terminate already running bar instances
+killall -q polybar
+
+# Wait until the processes have been shut down
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+update_file=/tmp/updates
+echo "$(checkupdates | wc -l)" > /tmp/updates && echo "$(yay -Qum | wc -l)" >> /tmp/updates &
+unset update_file
+
+# Wait until the control has started
+polybar level &
+polybar control &
+polybar workspace &
+#pgrep spotify && polybar player &
+polybar notify &
+polybar status &
+polybar power &
+polybar topright-extras &

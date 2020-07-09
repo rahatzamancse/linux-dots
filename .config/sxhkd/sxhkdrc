@@ -1,0 +1,289 @@
+##  
+##   _        _                   
+##  / |_ __  | |  __ _ _ __   ___ 
+##  | | '_ \/ __)/ _` | '_ \ / _ \
+##  | | | | \__ \ (_| | | | |  __/
+##  |_|_| |_(   /\__,_|_| |_|\___|
+##      |_|                  
+##
+
+## This keybinding combo is specifically made for BSPWM and VIM users.
+## This has pseudo vim like modes to move windows around.
+## I will make a documentation one day 😅.
+
+## NOTE: (to be fixed later where to put)
+# NORMAL MODE
+# SUPER + dir: Change focus
+# SUPER + num: Change desktop
+# SUPER + SHIFT + dir: Move node
+# SUPER + SHIFT + num: Send node to desktop
+# SUPER + CTRL + dir: 
+# SUPER + CTRL + num: 
+
+# VISUAL MODE
+# dir: Change focus
+# num: Change desktop
+# SUPER + dir: Move node
+# SUPER + num: Send node to desktop
+# SUPER + SHIFT + dir: Resize node
+# SUPER + SHIFT + num:
+# SUPER + CTRL + dir:
+# SUPER + CTRL + num:
+# SHIFT + dir: Preselection
+# SHIFT + num: Send node to Desktop
+
+
+# NEW OPEN ITEMS CHORDS TODO
+# super + o ; {e,w,m}
+	# {gvim,firefox,thunderbird}
+
+
+
+
+##  ____                                 ____            _             _ 
+## |  _ \ _ __ ___   ___ ___  ___ ___   / ___|___  _ __ | |_ _ __ ___ | |
+## | |_) | '__/ _ \ / __/ _ \/ __/ __| | |   / _ \| '_ \| __| '__/ _ \| |
+## |  __/| | | (_) | (_|  __/\__ \__ \ | |__| (_) | | | | |_| | | (_) | |
+## |_|   |_|  \___/ \___\___||___/___/  \____\___/|_| |_|\__|_|  \___/|_|
+##
+##
+
+# Only reload keyboard shortcuts with sxhkd
+super + Escape
+	pkill -u $USER -USR1 -x sxhkd && dunstify -r 500 "SXHKD" "config reloaded"
+
+# quit/restart bspwm
+super + shift + {q,r}
+	bspc {quit,wm -r} && dunstify -r 500 "BSPWM" "WM reloaded"
+
+# close and a kill window
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# Screenshot
+Print
+	flameshot gui
+super + Print
+	mkdir -p $HOME/Pictures && flameshot full -p $HOME/Pictures
+
+
+
+##  
+##    ___                     ____   ___ _____    
+##   / _ \ _ __   ___ _ __   |  _ \ / _ \_   _|__ 
+##  | | | | '_ \ / _ \ '_ \  | | | | | | || |/ __|
+##  | |_| | |_) |  __/ | | | | |_| | |_| || |\__ \
+##   \___/| .__/ \___|_| |_| |____/ \___/ |_||___/
+##        |_|                                     
+##  
+
+# TODO: Pop up rofi with all config files I want to edit
+# There should also be some directories selecting which will open in $EXPLORER
+# Git management can be done also...
+
+
+##  
+##   ____                                        _                           _     
+##  |  _ \ _ __ ___   __ _ _ __ __ _ _ __ ___   | |    __ _ _   _ _ __   ___| |__  
+##  | |_) | '__/ _ \ / _` | '__/ _` | '_ ` _ \  | |   / _` | | | | '_ \ / __| '_ \ 
+##  |  __/| | | (_) | (_| | | | (_| | | | | | | | |__| (_| | |_| | | | | (__| | | |
+##  |_|   |_|  \___/ \__, |_|  \__,_|_| |_| |_| |_____\__,_|\__,_|_| |_|\___|_| |_|
+##                   |___/                                                         
+
+# terminal emulator
+super + Return
+	$TERMINAL
+
+# Launcher
+super + space
+	$LAUNCHER
+
+# Goto Browser, open if not exists
+## TODO: NOT COMPLETE(need to implement)
+super + b
+	$BROWSER
+
+# Create new browser window
+super + shift + b
+	$BROWSER
+
+# Explorer
+super + e
+	$EXPLORER -w
+
+
+##  
+##  __        ___           _                 _____                    
+##  \ \      / (_)_ __   __| | _____      __ |  ___|__   ___ _   _ ___ 
+##   \ \ /\ / /| | '_ \ / _` |/ _ \ \ /\ / / | |_ / _ \ / __| | | / __|
+##    \ V  V / | | | | | (_| | (_) \ V  V /  |  _| (_) | (__| |_| \__ \
+##     \_/\_/  |_|_| |_|\__,_|\___/ \_/\_/   |_|  \___/ \___|\__,_|___/
+##                                                                     
+
+# Focus window by direction, works with multithread
+super + {h,j,k,l}
+	if ! bspc node -f {west,south,north,east}; then bspc monitor -f {west,south,north,east}; fi
+super + {Left,Down,Up,Right}
+	if ! bspc node -f {west,south,north,east}; then bspc monitor -f {west,south,north,east}; fi
+
+# Go to last desktop
+super + grave
+	bspc desktop -f last
+	
+# Go to last window in current desktop
+super + Tab
+	bspc node -f last.local
+
+
+##  
+##   _  __        ___           _                  ___            
+##  / | \ \      / (_)_ __   __| | _____      __  / _ \ _ __  ___ 
+##  | |  \ \ /\ / /| | '_ \ / _` |/ _ \ \ /\ / / | | | | '_ \/ __|
+##  | |   \ V  V / | | | | | (_| | (_) \ V  V /  | |_| | |_) \__ \
+##  |_|    \_/\_/  |_|_| |_|\__,_|\___/ \_/\_/    \___/| .__/|___/
+##                                                     |_|        
+##  
+
+# These are single (focused) window operations
+# Toggle tiling mode of window
+super + t
+	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
+super + button2
+	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
+
+# Make pseudo tiled
+super + shift + t
+	bspc node -t {pseudo_tiled,tiled}
+
+# Make window sticky
+super + s
+	bspc node -g sticky
+
+# move current window to largest space or preselected area if there is one.
+super + shift + Return
+	$HOME/.config/bspwm/scripts/windowpromoter.sh
+
+
+##  
+##   _                            _   
+##  | |    __ _ _   _  ___  _   _| |_ 
+##  | |   / _` | | | |/ _ \| | | | __|
+##  | |__| (_| | |_| | (_) | |_| | |_ 
+##  |_____\__,_|\__, |\___/ \__,_|\__|
+##              |___/                 
+##   __  __             _             _       _   _             
+##  |  \/  | __ _ _ __ (_)_ __  _   _| | __ _| |_(_) ___  _ __  
+##  | |\/| |/ _` | '_ \| | '_ \| | | | |/ _` | __| |/ _ \| '_ \ 
+##  | |  | | (_| | | | | | |_) | |_| | | (_| | |_| | (_) | | | |
+##  |_|  |_|\__,_|_| |_|_| .__/ \__,_|_|\__,_|\__|_|\___/|_| |_|
+##                       |_|                                    
+##  
+
+# Toggle monocle mode
+super + f
+	bspc desktop -l next
+
+# Toggle fullscreen
+super + shift + f 
+	bspc node -t {fullscreen,tiled}	
+
+# Force all windows of the desktop to tile/float # TODO: will create a toggle later
+super + alt + {t,f}
+	for window in $(bspc query -N -d focused); do bspc node $window -t {tiled,floating}; done
+
+
+##  
+##   ____            _    _              
+##  |  _ \  ___  ___| | _| |_ ___  _ __  
+##  | | | |/ _ \/ __| |/ / __/ _ \| '_ \ 
+##  | |_| |  __/\__ \   <| || (_) | |_) |
+##  |____/ \___||___/_|\_\\__\___/| .__/ 
+##                                |_|    
+##   __  __             _             _       _   _             
+##  |  \/  | __ _ _ __ (_)_ __  _   _| | __ _| |_(_) ___  _ __  
+##  | |\/| |/ _` | '_ \| | '_ \| | | | |/ _` | __| |/ _ \| '_ \ 
+##  | |  | | (_| | | | | | |_) | |_| | | (_| | |_| | (_) | | | |
+##  |_|  |_|\__,_|_| |_|_| .__/ \__,_|_|\__,_|\__|_|\___/|_| |_|
+##                       |_|                                    
+##  
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+
+##  
+##    ___  _   _                 __  __  ___  ____  _____     
+##   / _ \| |_| |__   ___ _ __  |  \/  |/ _ \|  _ \| ____|___ 
+##  | | | | __| '_ \ / _ \ '__| | |\/| | | | | | | |  _| / __|
+##  | |_| | |_| | | |  __/ |    | |  | | |_| | |_| | |___\__ \
+##   \___/ \__|_| |_|\___|_|    |_|  |_|\___/|____/|_____|___/
+##                                                            
+
+
+## VISUAL mode
+super + m
+	killall -e sxhkd; polybar-msg hook window-mode 2 > /dev/null && sxhkd -c $HOME/.config/sxhkd/mode-visual &
+
+
+## 
+##  _____      _               _  __              
+## | ____|_  _| |_ _ __ __ _  | |/ /___ _   _ ___ 
+## |  _| \ \/ / __| '__/ _` | | ' // _ \ | | / __|
+## | |___ >  <| |_| | | (_| | | . \  __/ |_| \__ \
+## |_____/_/\_\\__|_|  \__,_| |_|\_\___|\__, |___/
+##                                   |___/     
+
+#Brightness control
+XF86MonBrightness{Down,Up}
+	xbacklight {-dec,-inc} 5
+
+#Volume Control
+XF86Audio{Lower,Raise}Volume
+	amixer set Master 5%{-,+}
+XF86AudioMute
+	amixer set Master toggle
+
+XF86Sleep
+	systemctl suspend
+
+
+
+##   _   _ _   _ _   _ ____  _____ ____  
+##  | | | | \ | | | | / ___|| ____|  _ \ 
+##  | | | |  \| | | | \___ \|  _| | | | |
+##  | |_| | |\  | |_| |___) | |___| |_| |
+##   \___/|_| \_|\___/|____/|_____|____/ 
+##                                       
+
+
+## **Others Keybindings (Not active)**
+# These keybinding might be useful.
+# But I do not use these
+
+# send current node to the newest preselected node
+#super + m
+#	bspc node -n last.!automatic.local
+
+# focus the older or newer node in the focus history
+# super + {i,o}
+	# bspc wm -h off; \
+	# bspc node {older,newer} -f; \
+	# bspc wm -h on
+
+
+
+
+#### If you are using suckless tabbed
+#This I found from https://www.reddit.com/r/bspwm/comments/etfm3m/for_those_who_like_tabs/
+# and https://www.youtube.com/watch?v=tx_dtIijpco&t=864s
+# Add focused window to a tabbed instance in given direction
+# super + y; {h,j,k,l}
+    # $HOME/tabc.sh add {west,south,north,east} add $(bspc query -N -n focused)
+
+# Remove one tab from tabbed
+# super + y; r
+    # tabbed=$(bspc query -N -n focused); \
+    # child=$($HOME/tabc.sh list $tabbed | head -n1); \
+    # $HOME/tabc.sh remove $child
+

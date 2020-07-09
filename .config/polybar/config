@@ -1,0 +1,653 @@
+          ;=====================================;
+          ; ____       _       _                ;
+          ;|  _ \ ___ | |_   _| |__   __ _ _ __ ;
+          ;| |_) / _ \| | | | | '_ \ / _` | '__|;
+          ;|  __/ (_) | | |_| | |_) | (_| | |   ;
+          ;|_|   \___/|_|\__, |_.__/ \__,_|_|   ;
+          ;              |___/                  ;
+          ;=====================================;
+
+[colors]
+background = #FF1c2c43
+background-alt = #FF0e1827
+foreground = #FEFEFE
+foreground-alt = #9ac4ff
+primary = #fff
+secondary = #a9b3c2
+alert = #bd2c40
+
+
+
+[bar/topright-extras]
+width = 20%
+height = 4%
+offset-x = 80%
+; offset-y = 0.5%
+
+radius = 4
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+border-size = 0
+border-color = #000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 0
+module-margin-right = 1
+ 
+font = Hack Nerd Font:pixelsize=20:style=Medium Condensed
+
+# Bottom left to imitate gnome-shells systray
+; bottom = false
+
+# REQUIRED for us to be able to move the window
+override-redirect = true
+
+modules-left = corona
+
+[module/corona]
+type = custom/script
+; width = 100
+; label = Something 
+exec = cat /tmp/corona-update || echo "Failed to update"
+exec-if = $HOME/.config/polybar/scripts/corona.sh
+tail = false
+interval = 10800
+
+format = <label>
+; format-background = #999
+; format-foreground = #999
+label = CORONA: %output%
+click-left = $HOME/.config/polybar/scripts/corona.sh || rm /tmp/corona-update
+
+
+[bar/level]
+width = 12%
+height = 4.3%
+; offset-x = 14%
+offset-x = 6%
+offset-y = 0.65%
+radius = 22
+fixed-center = true
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 0
+border-color = #000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 0
+module-margin-right = 1
+ 
+font-0 = Hack Nerd Font:pixelsize=14:style=Medium Condensed;5
+font-1 = Material Design Icons Desktop:pixelsize=20;5
+font-2 = Hack Nerd Font:pixelsize=20:style=Medium Condensed;7
+ 
+modules-center = xbacklight pulseaudio
+
+override-redirect = true
+wm-restack = bspwm
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+cursor-click = ns-resize 
+cursor-scroll = ns-resize 
+
+enable-ipc = true
+
+
+[bar/control]
+; width = 13%
+width = 5.2%
+height = 4.3%
+offset-x = 0%:10
+offset-y = 0.65%
+radius = 22
+fixed-center = true
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 0
+border-color = #000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 2
+module-margin-right = 2
+ 
+font-0 = BreezeSans:pixelsize=14:style=Medium Condensed;4
+font-1 = Material Design Icons Desktop:pixelsize=20;5
+font-2 = BreezeSans:pixelsize=10:style=Bold Condensed;3
+ 
+; modules-center = search screenshot file-man terminal browser
+modules-center = search terminal
+
+wm-restack = bspwm
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = default
+
+
+[bar/workspace]
+width = 23.5%
+height = 4.85%
+; offset-x = 30%
+offset-x = 20%
+offset-y = 0%
+radius = 0
+fixed-center = true
+bottom = true
+
+background = #00000000
+foreground = ${colors.foreground}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+ 
+font-0 = Material Design Icons Desktop:pixelsize=26;1
+font-1 = BreezeSans:pixelsize=28:style=Regular Condensed;-2
+font-2 = Material Design Icons Desktop:pixelsize=18;-10
+ 
+modules-center = bspwm
+
+wm-restack = bspwm
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = default
+
+[bar/music]
+width = 30%
+height = 4.3%
+offset-x = 35%
+offset-y = 6%:1
+radius = 22
+fixed-center = true
+bottom = true
+
+background = #00191414
+foreground = #fff
+
+border-size = 0
+border-color = #000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 0
+module-margin-right = 0
+ 
+font-0 = BreezeSans:pixelsize=16:style=Medium Condensed;2
+font-1 = Font Awesome 5 Pro:pixelsize=20:style=Solid;3
+font-2 = Font Awesome 5 Brands:pixelsize=21;3
+font-3 = SourceHanSansJP:pixelsize=14:style=Medium;2
+font-4 = Font Awesome 5 Pro:pixelsize=18:style=Solid;3
+font-5 = Hack Nerd Font:pixelsize=31:style=Medium Condensed;7
+ 
+modules-center = right song left
+
+override-redirect = true
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+cursor-click = ns-resize 
+cursor-scroll = ns-resize 
+
+[bar/player]
+width = 11%
+height = 4.3%
+offset-x = 44.5%
+offset-y = 0.65%
+radius = 22 
+fixed-center = true
+bottom = true
+
+background = ${colors.background-alt}
+foreground = ${colors.foreground-alt}
+
+border-size = 0
+
+padding-left = 6
+padding-right = 6
+
+module-margin-left = 2
+module-margin-right = 3
+ 
+font-0 = BreezeSans:pixelsize=16:style=Medium Condensed;2
+font-1 = Font Awesome 5 Pro:pixelsize=20:style=Regular;3
+font-2 = Font Awesome 5 Brands:pixelsize=21;3
+font-3 = SourceHanSansJP:pixelsize=14:style=Medium;2
+font-4 = Font Awesome 5 Pro:pixelsize=18:style=Solid;3
+ 
+modules-left = info
+modules-center = prev toggle next
+
+wm-restack = bspwm
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = default
+
+[bar/notify]
+width = 30%
+height = 4.3%
+offset-x = 50%:
+offset-y = 0.65%
+radius = 22
+fixed-center = true
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 0
+border-color = #000
+
+padding-right = 5
+
+module-margin-left = 2
+module-margin-right = 3
+ 
+font-0 = BreezeSans:pixelsize=10:style=Bold Condensed;-10
+font-1 = BreezeSans:pixelsize=10:style=Bold Condensed;10
+font-2 = Material Design Icons Desktop:pixelsize=22;5
+font-3 = Material Design Icons Desktop:pixelsize=10;10
+font-4 = Material Design Icons Desktop:pixelsize=10;-8
+font-5 = Hack Nerd Font:pixelsize=16:style=Bold Condensed;5
+
+modules-center = window-mode
+# modules-right = gmail cpu update
+modules-right = gmail cpu
+
+enable-ipc = true
+
+tray-position = center
+tray-detached = false
+; tray-maxsize = 20
+; tray-background = 
+tray-offset-x = -32.5%
+; tray-offset-y = 0
+; tray-transparent = true
+
+; tray-padding = 0
+tray-scale = 1.0
+
+wm-restack = bspwm
+
+cursor-click = pointer
+cursor-scroll = default
+
+
+
+[module/window-mode]
+type = custom/ipc
+content = 
+hook-0 = echo %{T6}NORMAL%{T-}
+hook-1 = echo %{T6}%{F#f00}INSERT%{F-}%{T-}
+initial = 1
+
+[module/demo]
+click-left = polybar-msg -p %pid% hook demo 1
+
+
+[bar/status]
+width = 16%
+height = 4.3%
+offset-x = 81.65%:-20
+offset-y = 0.65%
+radius = 22
+fixed-center = true
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 0
+border-color = #000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+ 
+font-0 = BreezeSans:pixelsize=14:style=Medium Condensed;4
+font-1 = Material Design Icons Desktop:pixelsize=21;5
+font-2 = BreezeSans:pixelsize=10:style=Bold Condensed;3
+font-3 = BreezeSans:pixelsize=10:style=Bold Condensed;-10
+font-4 = BreezeSans:pixelsize=10:style=Bold Condensed;10
+ 
+; modules-center = wlan battery bluetooth date 
+modules-center = wlan battery date 
+
+wm-restack = bspwm
+
+cursor-click = pointer
+cursor-scroll = default
+
+[bar/power]
+width = 2.35%
+height = 4.1%
+offset-x = 97.7%:-10
+offset-y = 0.75%
+radius = 22
+fixed-center = true
+bottom = true
+
+background = #ff004b
+foreground = #fff
+
+border-size = 0
+border-color = #000
+
+padding-left = 5
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+ 
+font-0 = Material Design Icons Desktop:pixelsize=23;6
+ 
+modules-center = power-menu 
+
+wm-restack = bspwm
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = default
+
+click-left = ~/.config/polybar/scripts/power-menu.sh &
+
+[module/bspwm]
+type = internal/bspwm
+
+reverse-scroll = false
+enable-scroll = false
+
+ws-icon-0 = I;%{F#fefefe}󰆍%{F-}
+ws-icon-1 = II;%{F#1EBBEE}󰇧%{F-}
+ws-icon-2 = III;%{F#ff004b}󰄘%{F-}
+ws-icon-3 = IV;%{F#ffca00}󰇰%{F-}
+ws-icon-4 = V;%{F#1164f1}󰹻%{F-}
+ws-icon-5 = VI;%{F#c46a4b}󰉨%{F-}
+ws-icon-6 = VII;%{F#ff93aa}󰿁%{F-}
+ws-icon-7 = VIII;%{F#FF8C00}󰊠%{F-}
+ws-icon-8 = IX;%{F#d448ff}󰆉%{F-}
+ws-icon-9 = X;%{F#21cd5f}󰫔%{F-}
+ws-icon-default =%{F#9e43ba}󰗹%{F-}
+
+format = "<label-state>" 
+
+label-focused ="{%icon%} "
+label-focused-padding = 0
+
+label-occupied ="%icon%%{F#32fce1}%{T3}%{O-16}󰈔%{T-}%{F-}"
+label-occupied-padding = 0
+
+label-urgent ="%icon%%{F#ff004b}%{T3}%{O-12}󰚽%{T-}%{F-}"
+label-urgent-padding = 0
+
+label-empty = "%icon% "
+label-empty-padding = 0
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label><bar>
+label = "󰃠 "
+label-foreground = ${colors.background}
+
+bar-width = 10
+bar-indicator = "%{T3}%{T-}"
+bar-indicator-foreground = ${colors.background}
+bar-indicator-font = 2
+bar-fill = ━
+bar-fill-font = 2
+bar-fill-foreground = ${colors.background}
+bar-empty = ━
+bar-empty-font = 2
+bar-empty-foreground = #607290
+
+[module/wlan]
+type = internal/network
+interface = ${env:PRIMARY_NETWORK_ADAPTER}
+interval = 3.0
+
+format-connected =<ramp-signal><label-connected>
+label-connected = %{T4}%upspeed%%{T-}%{O-35}%{T5}%downspeed%%{T-}
+
+label-disconnected = 󰤭
+label-disconnected-foreground = #6c809e
+
+ramp-signal-0 = %{F#ff004b}󰤫%{F-}
+ramp-signal-1 = %{F#ffd200}󰤟%{F-}
+ramp-signal-2 = 󰤢
+ramp-signal-3 = 󰤥
+ramp-signal-4 = 󰤨
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 60
+
+date = %a %e %b
+time = %H:%M
+
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume><label-volume>
+label-volume = "%percentage%%"
+label-volume-foreground = ${root.foreground}
+
+label-muted = 󰸈
+label-muted-foreground = #607290
+
+ramp-volume-0 = 󰕿
+ramp-volume-1 = 󰖀
+ramp-volume-2 = 󰕾
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = %{T3}<label-charging>%{T-}<animation-charging> 
+
+format-discharging = %{T3}<label-discharging>%{T-}<ramp-capacity>
+
+format-full = %{T3}100%%{T-}󰂄
+format-full-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 󱊤
+animation-charging-1 = 󱊥
+animation-charging-2 = 󱊦
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 900
+
+ramp-capacity-0 = %{F#ff004b}󰂃%{F-}
+ramp-capacity-1 = %{F#ff5300}󰁺%{F-}
+ramp-capacity-2 = %{F#ff8000}󰁻%{F-}
+ramp-capacity-3 = %{F#ffd200}󰁼%{F-}
+ramp-capacity-4 = 󰁽
+ramp-capacity-5 = 󰁾
+ramp-capacity-6 = 󰁿
+ramp-capacity-7 = 󰂀
+ramp-capacity-8 = 󰂁
+ramp-capacity-9 = 󰂂
+ramp-capacity-10 = 󰁹 
+ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-framerate = 750
+
+[module/browser]
+type = custom/script
+exec = echo "󰊯"
+click-left = $BROWSER &
+
+[module/terminal]
+type = custom/script
+exec = echo "󰅬"
+click-left = $TERMINAL &
+
+[module/file-man]
+type = custom/script
+exec = echo "󰉋"
+click-left = $EXPLORER &
+
+[module/search]
+type = custom/script
+exec = echo "󱁴"
+click-left = $LAUNCHER
+
+[module/screenshot]
+type = custom/script
+exec = echo "󰨤"
+click-left = flameshot gui
+
+[module/prev]
+type = custom/script
+exec = echo "%{T5}%{T-}" &
+format = "%{F#e5efff}<label>%{F-}"
+interval = 0.5
+
+tail = true
+click-left = playerctl --player=spotify previous &
+
+[module/info]
+type = custom/script
+exec = echo "" &
+interval = 0.5
+
+tail = true
+click-left = ~/.config/polybar/scripts/info.sh 2>/dev/null &
+click-right = bspc desktop -f '^10'
+
+[module/toggle]
+type = custom/script
+exec = [[ "$(playerctl -p spotify status 2>/dev/null)" == "Playing" ]] && echo "" || echo ""
+interval = 0.2
+
+tail = true
+click-left = playerctl --player=spotify play-pause &
+
+[module/right]
+type = custom/text
+content-background = #00000000
+content-foreground = #df191414
+content = ""
+
+[module/song]
+type = custom/script
+exec = ~/.config/polybar/scripts/song.sh 2>/dev/null || echo "No player found"
+format = "<label>  "
+format-prefix = "%{F#1db954}   %{F-}"
+format-background = #df191414
+interval = 0.5
+
+tail = true
+click-left = playerctl -p spotify play-pause & 
+
+[module/left]
+type = custom/text
+content-background = #00000000
+content-foreground = #df191414
+content =""
+
+[module/next]
+type = custom/script
+exec = echo "%{T5}%{T-}" &
+format = "%{F#e5efff}<label>%{F-}"
+interval = 0.5
+
+tail = true
+click-left = playerctl --player=spotify next &
+
+[module/close-menu]
+type = custom/script
+exec = echo "%{O2}󰅂" &
+interval = 600
+tail = true
+
+[module/gmail]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/gmail/launch.py --prefix '󰇮' --color '#be5046' --nosound
+tail = true
+click-left = xdg-open https://mail.google.com
+
+[module/cpu]
+type = custom/script
+exec = ~/.config/polybar/scripts/cpu.sh 2> /dev/null || echo "%{T5}%{F#dae1ec}󰓦%{T4}%{O-13}󰓦%{T-}%{F-}" 
+format-prefix = 󰻠
+format-foreground = ${colors.secondary}
+interval = 1
+tail = true
+click-left = $TERMINAL htop
+
+[module/update]
+type = custom/script
+exec = ~/.config/polybar/scripts/update.sh 2> /dev/null || echo "󰏗%{T5}%{F#dae1ec}󰓦%{T4}%{O-13}󰓦%{T-}%{F-}"
+format-foreground = ${colors.secondary}
+interval = 1
+tail =true
+click-left = pamac-manager
+
+[module/mtorrent]
+type = custom/script
+exec = echo "󱋌     " || echo "󱋖     " 
+format-foreground = ${colors.secondary}
+interval = 1
+
+tail = true
+
+[module/open-menu]
+type = custom/script
+exec = echo "%{O-3}󰅁" &
+interval = 600
+
+tail = true
+
+[module/bluetooth]
+type = custom/script
+exec = ~/.config/polybar/scripts/bluetooth-status.sh &
+format-foreground = ${colors.foreground-alt}
+interval = 0.5
+
+tail = true
+click-left = ~/.config/polybar/scripts/bluetooth-status.sh -t &
+
+[module/power-menu]
+type = custom/script
+exec = echo "󰐥 "
+
+[global/wm]
+; I prefer to configure the gap from bar to window myself. So reseting the margin to zero
+margin-top = -100%
+margin-bottom = -100%

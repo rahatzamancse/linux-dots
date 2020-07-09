@@ -1,0 +1,67 @@
+#! /bin/bash
+
+# Cleanup BSPWM rules
+bspc rule -r "*"
+
+# Processes that should run only single instance
+SINGLE_INSTANCES=(sxhkd polybar flameshot dunst picom udiskie greenclip ibus-daemon)
+# Kill everything that ran before
+for name in ${SINGLE_INSTANCES[@]}; do
+	killall -q $name
+done
+# Making sure this script is run once only
+for name in ${SINGLE_INSTANCES[@]}; do
+	while pgrep -u $UID -x $name > /dev/null; do sleep 1; done
+done
+
+
+# Setting mouse icon type in the background (root window)
+xsetroot -cursor_name left_ptr &
+
+# setting the background
+feh --no-fehbg --bg-fill "$HOME/.local/share/backgrounds/main-wallpaper.jpg"
+
+# Screen shot purpose
+flameshot &
+
+# Notification daemon
+dunst &
+
+## systemd automount removable drives
+udiskie &
+
+## formerly compton compositor
+picom &
+
+## clipboard manager for rofi
+greenclip daemon &
+
+## Notify about package updates
+#update-checker 7200 &
+
+### This is now managed by dex
+## Polkit agent
+## Mate polkit agent feels more beautiful TO ME.
+# /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+# /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+## Gnome keyring (Handled by dex)
+# gnome-keyring-daemon &
+
+## Welcom message
+sleep 1 && dunstify "Welcome Back 1nsane \$hadow" "Also to you GULU" &
+
+## Wallpaper manager
+#betterlockscreen -w
+
+# Polybar
+$HOME/.config/polybar/autostart &
+
+# Input method
+ibus-daemon -d
+
+# Keyboard binder
+sxhkd &
+
+# Autostart manager
+dex -a
