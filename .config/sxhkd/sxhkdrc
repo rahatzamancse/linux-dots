@@ -66,6 +66,9 @@ Print
 super + Print
 	mkdir -p $HOME/Pictures && flameshot full -p $HOME/Pictures
 
+# Open dotfiles with rofi
+super + d
+	$HOME/.config/rofi/dots.sh
 
 
 ##  
