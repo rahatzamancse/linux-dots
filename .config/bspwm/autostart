@@ -1,8 +1,5 @@
 #! /bin/bash
 
-# Cleanup BSPWM rules
-bspc rule -r "*"
-
 # Processes that should run only single instance
 SINGLE_INSTANCES=(sxhkd polybar flameshot dunst picom udiskie greenclip ibus-daemon)
 # Kill everything that ran before
@@ -14,8 +11,8 @@ for name in ${SINGLE_INSTANCES[@]}; do
 	while pgrep -u $UID -x $name > /dev/null; do sleep 1; done
 done
 
-
 # Setting mouse icon type in the background (root window)
+# Maintains the root window (the background) and its behaviour.
 xsetroot -cursor_name left_ptr &
 
 # setting the background
@@ -36,9 +33,6 @@ picom &
 ## clipboard manager for rofi
 greenclip daemon &
 
-## Notify about package updates
-#update-checker 7200 &
-
 ### This is now managed by dex
 ## Polkit agent
 ## Mate polkit agent feels more beautiful TO ME.
@@ -46,6 +40,7 @@ greenclip daemon &
 # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 ## Gnome keyring (Handled by dex)
+## But dont forget to run the script once!
 # gnome-keyring-daemon &
 
 ## Welcom message

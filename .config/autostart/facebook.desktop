@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Facebook
+Comment=Open facebook in a small browser for quick access and less memory hogging
+TryExec=vimb
+Exec=vimb --name=facebook --class=vimb facebook.com
+Icon=facebook
+Terminal=false
+StartupWMClass=vimb
+Type=Application
+Categories=Chat;Network;
+Keywords=chat;messaging;messenger;

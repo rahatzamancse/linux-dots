@@ -9,4 +9,9 @@ xrandr --output Virtual1 --mode 1920x1080_60.00
 # load appearance settings
 xrdb merge .Xresources &
 
+# I have not much knowledge about gnome-keyring and ssh together.
+# It seems that without this variable SSH_AUTH_SOCK, I dont face any problem.
+# eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+# export SSH_AUTH_SOCK
+
 exec bspwm
