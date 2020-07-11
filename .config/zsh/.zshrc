@@ -91,6 +91,8 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # reminds you that you should use one of your existing aliases
 source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+# Automatically send notification when long task completes
+source /usr/share/zsh/plugins/zsh-auto-notify/auto-notify.plugin.zsh
 
 # bind UP and DOWN arrow keys to history substring search
 zmodload zsh/terminfo
