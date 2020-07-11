@@ -6,4 +6,4 @@ memory=$(free -t | grep Mem | awk '{print $3/$2*100}')
 useage=$(echo $useage  | awk '{print int($1+0.5)}')
 memory=$(echo $memory | awk '{print int($1+0.5)}')
 
-echo "%{F#dae1ec}%{T1}$useage%{T-}%{T2}%{O-13}$memory%{T-}%{F-}"
+echo "%{F#dae1ec}%{T4}$useage%{T-}%{T5}%{O-13}$memory%{T-}%{F-}"
