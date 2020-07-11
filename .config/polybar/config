@@ -446,9 +446,9 @@ type = internal/date
 interval = 60
 
 date = %a %e %b
-time = %H:%M
+time = %I:%M %p
 
-label = %date% %time%
+label = %date% | %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio

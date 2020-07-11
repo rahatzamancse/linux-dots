@@ -2,8 +2,7 @@
 
 # I like a bigger cursor
 export XCURSOR_SIZE=64
-# export QT_QPA_PLATFORMTHEME=gtk3
-export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=gtk2
 
 # XDG variables
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -12,10 +11,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # File locations
 export ZDOTDIR=$HOME/.config/zsh
-# export HISTFILE=$HOME/.cache/zhistory
-# export HISTSIZE=500
-# export HISTFILESIZE=100000
-# export SAVEHIST=100
 
 export XAUTHORITY=$HOME/.config/Xauthority
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
@@ -38,7 +33,7 @@ export GUI_EDITOR=/usr/bin/gedit
 export BROWSER=/usr/bin/google-chrome-stable
 export TERM=/usr/bin/kitty
 export TERMINAL=/usr/bin/kitty
-export VISUAL=/usr/bin/vim
+export VISUAL=/usr/bin/gedit
 export EDITOR=/usr/bin/vim
 export EXPLORER=/usr/bin/nautilus
 export LAUNCHER=$HOME/.config/rofi/launch.sh
