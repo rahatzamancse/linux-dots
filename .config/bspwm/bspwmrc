@@ -54,13 +54,6 @@ bspc config pointer_action2      resize_side
 # this is used to change window mode in sxhkd
 #bspc config pointer_action3      resize_corner 
 
-## Some applications specific predefined rules
-# Auto start applications
-bspc rule -a TelegramDesktop --one-shot desktop='^9' follow=off
-bspc rule -a vimb:facebook --one-shot desktop='^9' follow=off
-bspc rule -a MineTime --one-shot desktop='^8' follow=off
-bspc rule -a Mailspring --one-shot desktop='^8' follow=off
-
 ## Fix for Annoying focus stealing of MineTime, Mailspring and other apps (WIP)
 # We wait for 1 minute in the startup so all programs will
 # start in their corresponding desktop without stealing foucs
@@ -68,6 +61,12 @@ bspc rule -a Mailspring --one-shot desktop='^8' follow=off
 bspc config ignore_ewmh_focus true
 (sleep 60 && bspc config ignore_ewmh_focus false) &
 
+## Some applications specific predefined rules
+# Auto start applications
+bspc rule -a TelegramDesktop --one-shot desktop='^9' follow=off
+bspc rule -a vimb:facebook --one-shot desktop='^9' follow=off
+bspc rule -a MineTime --one-shot desktop='^8' follow=off
+bspc rule -a Mailspring --one-shot desktop='^8' follow=off
 
 ## Regular applications
 bspc rule -a Gcolor3 state=floating center=true
@@ -85,6 +84,14 @@ bspc rule -a "Crow Translate" state=floating follow=off
 bspc rule -a Ibus-ui-gtk3 state=floating follow=off
 bspc rule -a Mozc_renderer state=floating follow=off
 bspc rule -a "Manjaro Settings Manager" state=floating center=true
+bspc rule -a "VirtualBox Manager" state=floating center=true
+bspc rule -a "Nm-connection-editor" state=floating center=true
+bspc rule -a "ClipGrab" state=floating center=true
+bspc rule -a "Gufw.py" state=floating center=true
+bspc rule -a "Gtkhash" state=floating center=true
+bspc rule -a "MEGAsync" state=floating
+bspc rule -a "Peek" state=floating
+bspc rule -a "SimpleScreenRecorder" state=floating center=true
 
 ## Others (Not used)
 # bspc rule -a '*' follow=on state=pseudo_tiled
