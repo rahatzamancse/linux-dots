@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Processes that should run only single instance
-SINGLE_INSTANCES=(sxhkd polybar flameshot dunst picom udiskie greenclip ibus-daemon)
+SINGLE_INSTANCES=(vimb sxhkd polybar flameshot dunst picom udiskie greenclip ibus-daemon)
 # Kill everything that ran before
 for name in ${SINGLE_INSTANCES[@]}; do
 	killall -q $name
@@ -15,42 +15,17 @@ done
 # Maintains the root window (the background) and its behaviour.
 xsetroot -cursor_name left_ptr &
 
-# setting the background
-feh --no-fehbg --bg-fill "$HOME/.local/share/backgrounds/main-wallpaper.jpg"
-
 # Screen shot purpose
 flameshot &
-
-# Notification daemon
-dunst &
 
 ## systemd automount removable drives
 udiskie &
 
 ## formerly compton compositor
-picom &
+picom -b &
 
 ## clipboard manager for rofi
 greenclip daemon &
-
-### This is now managed by dex
-## Polkit agent
-## Mate polkit agent feels more beautiful TO ME.
-# /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
-# /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-## Gnome keyring (Handled by dex)
-## But dont forget to run the script once!
-# gnome-keyring-daemon &
-
-## Welcom message
-sleep 1 && dunstify "Welcome Back 1nsane \$hadow" "Also to you GULU" &
-
-## Wallpaper manager
-#betterlockscreen -w
-
-# Polybar
-$HOME/.config/polybar/autostart &
 
 # Input method
 ibus-daemon -d
@@ -58,5 +33,21 @@ ibus-daemon -d
 # Keyboard binder
 sxhkd &
 
-# Autostart manager
+## Autostart manager
+## Check `dex -ad` to see what starts here
 dex -a
+
+# Polybar
+$HOME/.config/polybar/autostart &
+
+# Set the border colors.
+bspc config normal_border_color "#111824"
+# bspc config active_border_color "$color1"
+bspc config focused_border_color "#FF8484"
+# bspc config presel_feedback_color "$color1"
+
+# Notification daemon
+dunst &
+
+## Welcom message
+sleep 1 && dunstify -a "insane-PC" -u low "Welcome" "1nsane \$hadow & GULU" &

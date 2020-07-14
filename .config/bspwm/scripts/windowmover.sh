@@ -13,8 +13,6 @@ trap 'follower' INT TERM QUIT EXIT
 size=${2:-'20'}
 dir=$1
 
-bspc config pointer_follows_focus true
-
 # Find current window mode
 is_floating() {
 	bspc query -T -n | grep -q '"state":"floating"'
@@ -40,5 +38,5 @@ if is_floating; then
 	xdo move ${switch} ${sign}${size}
 # Otherwise, window is tiled: switch with window in given direction
 else
-	bspc node -n ${dir}.!automatic || bspc node -s ${dir} ||  bspc node -m ${dir} && bspc monitor -f
+	bspc node -n ${dir}.!automatic -f || bspc node -s ${dir} -f ||  bspc node -m ${dir} -f && bspc monitor -f
 fi

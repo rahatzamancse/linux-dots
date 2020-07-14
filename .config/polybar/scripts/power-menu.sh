@@ -12,10 +12,11 @@ shutdown="󰐥"
 reboot="󰜉"
 lock="󰤁"
 suspend="󰤄"
+hibernate="󰙧"
 logout="󰿅"
 
 # Variable passed to rofi
-options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
+options="$shutdown\n$reboot\n$lock\n$suspend\n$hibernate\n$logout"
 
 # Remapping movement
 xmodmap -e "keycode 32 = Return"
@@ -41,10 +42,15 @@ case $chosen in
         ;;
     $suspend)
         # mpc -q pause
-        amixer set Master mute
+        # amixer set Master mute
 	betterlockscreen -l & 
 	sleep 0.5
         systemctl suspend
+        ;;
+    $hibernate)
+	betterlockscreen -l &
+	sleep 0.5
+	systemctl hibernate
         ;;
     $logout)
         bspc quit

@@ -8,14 +8,13 @@
           ;=====================================;
 
 [colors]
-background = #FF1c2c43
-background-alt = #FF0e1827
-foreground = #FEFEFE
-foreground-alt = #9ac4ff
-primary = #fff
-secondary = #a9b3c2
-alert = #bd2c40
-
+background	= #FF1c2c43
+background-alt	= #FF0e1827
+foreground	= #FEFEFE
+foreground-alt	= #9ac4ff
+primary		= #fff
+secondary	= #a9b3c2
+alert		= #bd2c40
 
 
 [bar/topright-extras]
@@ -24,7 +23,9 @@ height = 4%
 offset-x = 80%
 ; offset-y = 0.5%
 
-radius = 4
+monitor = ${env:MONITOR:}
+
+radius = 5
 fixed-center = true
 
 background = ${colors.background}
@@ -54,16 +55,17 @@ tail = false
 interval = 10800
 
 format = <label>
-; format-background = #999
-; format-foreground = #999
+format-background = ${color.background}
+format-foreground = ${color.foreground}
 label = CORONA: %output%
 click-left = $HOME/.config/polybar/scripts/corona.sh || rm /tmp/corona-update
 
 
 [bar/control]
+monitor = ${env:MONITOR:}
 ; width = 13%
 width = 5.2%
-height = 4.3%
+height = 4%
 offset-x = 0%:10
 offset-y = 0.65%
 radius = 22
@@ -98,51 +100,11 @@ cursor-click = pointer
 cursor-scroll = default
 
 
-[bar/level]
-width = 12%
-height = 4.3%
-; offset-x = 14%
-offset-x = 6%
-offset-y = 0.65%
-radius = 22
-fixed-center = true
-bottom = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-border-size = 0
-border-color = #000
-
-padding-left = 2
-padding-right = 2
-
-module-margin-left = 0
-module-margin-right = 1
- 
-font-0 = Hack Nerd Font:pixelsize=14:style=Medium Condensed;5
-font-1 = Material Design Icons Desktop:pixelsize=20;5
-font-2 = Hack Nerd Font:pixelsize=20:style=Medium Condensed;7
- 
-modules-center = xbacklight pulseaudio
-
-override-redirect = true
-wm-restack = bspwm
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-cursor-click = ns-resize 
-cursor-scroll = ns-resize 
-
-enable-ipc = true
-
-
 [bar/workspace]
+monitor = ${env:MONITOR:}
 width = 23.5%
-height = 4.85%
-; offset-x = 30%
-offset-x = 20%
+height = 4.5%
+offset-x = 6%
 offset-y = 0%
 radius = 0
 fixed-center = true
@@ -157,8 +119,8 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
  
-font-0 = Material Design Icons Desktop:pixelsize=26;1
-font-1 = BreezeSans:pixelsize=28:style=Regular Condensed;-2
+font-0 = Material Design Icons Desktop:pixelsize=24;5
+font-1 = BreezeSans:pixelsize=28:style=Regular Condensed;4
 font-2 = Material Design Icons Desktop:pixelsize=18;-10
  
 modules-center = bspwm
@@ -172,8 +134,9 @@ cursor-click = pointer
 cursor-scroll = default
 
 [bar/music]
+monitor = ${env:MONITOR:}
 width = 30%
-height = 4.3%
+height = 4%
 offset-x = 35%
 offset-y = 6%:1
 radius = 22
@@ -210,8 +173,9 @@ cursor-click = ns-resize
 cursor-scroll = ns-resize 
 
 [bar/player]
+monitor = ${env:MONITOR:}
 width = 11%
-height = 4.3%
+height = 4%
 offset-x = 44.5%
 offset-y = 0.65%
 radius = 22 
@@ -247,9 +211,10 @@ cursor-click = pointer
 cursor-scroll = default
 
 [bar/notify]
-width = 30%
-height = 4.3%
-offset-x = 45%:
+monitor = ${env:MONITOR:}
+width = 25%
+height = 4%
+offset-x = 30%:
 offset-y = 0.65%
 radius = 22
 fixed-center = true
@@ -303,9 +268,10 @@ initial = 1
 
 
 [bar/status]
-width = 20%
-height = 4.3%
-offset-x = 76%
+monitor = ${env:MONITOR:}
+width = 26%
+height = 4%
+offset-x = 70%
 offset-y = 0.65%
 radius = 22
 fixed-center = true
@@ -318,20 +284,20 @@ border-size = 0
 border-color = #000
 
 padding-left = 0
-padding-right = 0
+padding-right = 6%
 
 module-margin-left = 1
 module-margin-right = 1
  
 font-0 = BreezeSans:pixelsize=14:style=Medium Condensed;4
 font-1 = Material Design Icons Desktop:pixelsize=21;5
-font-2 = BreezeSans:pixelsize=10:style=Bold Condensed;3
+font-2 = BreezeSans:pixelsize=10:style=Bold Condensed;15
 font-3 = BreezeSans:pixelsize=10:style=Bold Condensed;-10
 font-4 = BreezeSans:pixelsize=10:style=Bold Condensed;10
+font-5 = Material Design Icons Desktop:pixelsize=21
  
-; modules-center = wlan battery bluetooth date 
-modules-left = cpu
-modules-center = wlan battery date 
+; modules-center = cpu wlan battery bluetooth date 
+modules-right = xbacklight pulseaudio cpu wlan battery date 
 
 wm-restack = bspwm
 
@@ -339,15 +305,16 @@ cursor-click = pointer
 cursor-scroll = default
 
 [bar/power]
+monitor = ${env:MONITOR:}
 width = 2.35%
-height = 4.1%
+height = 4%
 offset-x = 97.7%:-10
 offset-y = 0.75%
 radius = 22
 fixed-center = true
 bottom = true
 
-background = #ff004b
+background = #FE0000
 foreground = #fff
 
 border-size = 0
@@ -407,21 +374,19 @@ label-empty-padding = 0
 
 [module/xbacklight]
 type = internal/xbacklight
+format = %{T6}<ramp>%{T-}%{T3}%{O-28}<label>%{O-}%{T-}
+label = "%percentage%%"
+label-foreground = ${colors.foreground}
+output = eDP1
+enable-scroll = true
 
-format = <label><bar>
-label = "󰃠 "
-label-foreground = ${colors.background}
-
-bar-width = 10
-bar-indicator = "%{T3}%{T-}"
-bar-indicator-foreground = ${colors.background}
-bar-indicator-font = 2
-bar-fill = ━
-bar-fill-font = 2
-bar-fill-foreground = ${colors.background}
-bar-empty = ━
-bar-empty-font = 2
-bar-empty-foreground = #607290
+ramp-0 = 󰃚
+ramp-1 = 󰃛
+ramp-2 = 󰃜
+ramp-3 = 󰃝
+ramp-4 = 󰃞
+ramp-5 = 󰃟
+ramp-6 = 󰃠
 
 [module/wlan]
 type = internal/network
@@ -453,7 +418,7 @@ label = %date% | %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <ramp-volume><label-volume>
+format-volume = %{T6}<ramp-volume>%{T-}%{T3}%{O-28}<label-volume>%{O-}%{T-}
 label-volume = "%percentage%%"
 label-volume-foreground = ${root.foreground}
 
@@ -471,11 +436,9 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging = %{T3}<label-charging>%{T-}<animation-charging> 
-
-format-discharging = %{T3}<label-discharging>%{T-}<ramp-capacity>
-
-format-full = %{T3}100%%{T-}󰂄
+format-charging = %{T6}<animation-charging>%{T-}%{T3}%{O-24}<label-charging>%{O-}%{T-}
+format-discharging = %{T6}<ramp-capacity>%{T-}%{T3}%{O-24}<label-discharging>%{O-}%{T-}
+format-full = %{T6}󰂄%{T-}%{T3}%{O-24}100%%{O-}%{T-}
 format-full-foreground = ${colors.foreground-alt}
 
 animation-charging-0 = 󱊤
@@ -599,6 +562,5 @@ type = custom/script
 exec = echo "󰐥 "
 
 [global/wm]
-; I prefer to configure the gap from bar to window myself. So reseting the margin to zero
 margin-top = -100%
 margin-bottom = -100%

@@ -2,7 +2,7 @@
 
 # I like a bigger cursor
 export XCURSOR_SIZE=64
-export QT_QPA_PLATFORMTHEME=gtk2
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 # XDG variables
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -29,22 +29,18 @@ export MYVIMRC='$HOME/.config/vimrc'
 export LESSHISTFILE=$HOME/.cache/lesshst
 
 # My defaults
-export GUI_EDITOR=/usr/bin/gedit
+export GUI_EDITOR=/usr/bin/vim
 export BROWSER=/usr/bin/google-chrome-stable
-export TERM=/usr/bin/kitty
+export TERM=xterm-kitty
 export TERMINAL=/usr/bin/kitty
-export VISUAL=/usr/bin/gedit
+export VISUAL=/usr/bin/vim
 export EDITOR=/usr/bin/vim
 export EXPLORER=/usr/bin/nautilus
 export LAUNCHER=$HOME/.config/rofi/launch.sh
 
-# Monitors names
-# Can be found by `xrandr`
-export PRIMARY_MONITOR=Virtual1
-
 # Primary network adapter name
 # Can be found with `ip addr`
-export PRIMARY_NETWORK_ADAPTER=enp0s3
+export PRIMARY_NETWORK_ADAPTER=wlp2s0
 
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx

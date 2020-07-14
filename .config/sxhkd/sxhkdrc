@@ -60,25 +60,14 @@ super + shift + {q,r}
 super + {_,shift + }w
 	bspc node -{c,k}
 
+super + Delete
+	betterlockscreen -l
+
 # Screenshot
 Print
 	flameshot gui
 super + Print
 	mkdir -p $HOME/Pictures && flameshot full -p $HOME/Pictures
-
-
-##  
-##    ___                     ____   ___ _____    
-##   / _ \ _ __   ___ _ __   |  _ \ / _ \_   _|__ 
-##  | | | | '_ \ / _ \ '_ \  | | | | | | || |/ __|
-##  | |_| | |_) |  __/ | | | | |_| | |_| || |\__ \
-##   \___/| .__/ \___|_| |_| |____/ \___/ |_||___/
-##        |_|                                     
-##  
-
-# TODO: Pop up rofi with all config files I want to edit
-# There should also be some directories selecting which will open in $EXPLORER
-# Git management can be done also...
 
 
 ##  
@@ -117,6 +106,10 @@ super + d
 # Open dotfiles with rofi
 ctrl + alt + e
 	rofimoji
+
+# Record webcam (mpv)
+ctrl + alt + r
+	mpv --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg av://v4l2:/dev/video0 --profile=low-latency --stream-record=$HOME/Videos/mpv-recs_$(date '+%Y-%m-%d_%H-%M-%S').mp4
 
 
 ##  
@@ -169,6 +162,11 @@ super + s
 # move current window to largest space or preselected area if there is one.
 super + shift + Return
 	$HOME/.config/bspwm/scripts/windowpromoter.sh
+
+super + shift + {h,j,k,l}
+	$HOME/.config/bspwm/scripts/windowmover.sh {west,south,north,east}
+super + shift + {Left,Down,Up,Right}
+	$HOME/.config/bspwm/scripts/windowmover.sh {west,south,north,east}
 
 
 ##  
@@ -247,9 +245,9 @@ XF86MonBrightness{Down,Up}
 
 #Volume Control
 XF86Audio{Lower,Raise}Volume
-	amixer set Master 5%{-,+}
+	pactl set-sink-volume 0 {-,+}10%
 XF86AudioMute
-	amixer set Master toggle
+	pactl set-sink-mute 0 toggle
 
 XF86Sleep
 	systemctl suspend

@@ -33,4 +33,4 @@ call plug#end()
 " Required for lightline.vim
 set noshowmode
 set laststatus=2
-
+set mouse=a
