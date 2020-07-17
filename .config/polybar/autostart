@@ -14,9 +14,9 @@ function intdiv() {
 
 bspc config -m $MONITOR_1 bottom_padding $(($(bspc config bottom_padding)+$(intdiv $HEIGHT_1 0.05)))
 
-MONITOR=$MONITOR_1 polybar control &
+MONITOR=$MONITOR_1 polybar launcher &
 MONITOR=$MONITOR_1 polybar workspace &
-MONITOR=$MONITOR_1 polybar notify &
+MONITOR=$MONITOR_1 polybar systray &
 MONITOR=$MONITOR_1 polybar status &
 MONITOR=$MONITOR_1 polybar power &
 

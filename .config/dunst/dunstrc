@@ -1,5 +1,6 @@
-# The order of the settings is maintained with the manual of dunst
-# All colors are given from command line because I am using pywal
+[colors]
+background = "#2c2a2c"
+foreground = "#fffcff"
 
 [global]
 monitor = 0
@@ -18,7 +19,7 @@ padding = 10
 horizontal_padding = 10
 frame_width = 5
 
-frame_color = #888888
+frame_color = "#94cbcb"
 separator_color = auto
 
 sort = yes
@@ -43,7 +44,7 @@ show_indicators = true
 icon_position = left
 min_icon_size = 64
 max_icon_size = 64
-# icon_path = ""
+icon_path = .icons/flattrcolor/status/24:.icons/flattrcolor/devices/48:.icons/flattrcolor/apps/scalable:.icons/flattrcolor/actions/scalable
 
 sticky_history = true
 history_length = 20

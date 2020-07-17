@@ -14,6 +14,7 @@ done
 # Setting mouse icon type in the background (root window)
 # Maintains the root window (the background) and its behaviour.
 xsetroot -cursor_name left_ptr &
+xset r rate 280 25
 
 # Screen shot purpose
 flameshot &
@@ -21,17 +22,14 @@ flameshot &
 ## systemd automount removable drives
 udiskie &
 
-## formerly compton compositor
-picom -b &
-
 ## clipboard manager for rofi
 greenclip daemon &
 
 # Input method
 ibus-daemon -d
 
-# Keyboard binder
-sxhkd &
+## formerly compton compositor
+picom -b &
 
 ## Autostart manager
 ## Check `dex -ad` to see what starts here
@@ -40,14 +38,16 @@ dex -a
 # Polybar
 $HOME/.config/polybar/autostart &
 
-# Set the border colors.
-bspc config normal_border_color "#111824"
-# bspc config active_border_color "$color1"
-bspc config focused_border_color "#FF8484"
-# bspc config presel_feedback_color "$color1"
-
 # Notification daemon
 dunst &
 
+wpg -m
+
 ## Welcom message
 sleep 1 && dunstify -a "insane-PC" -u low "Welcome" "1nsane \$hadow & GULU" &
+
+# Updating betterlockscreen
+betterlockscreen -u .config/wpg/.current &
+
+# Keyboard binder
+sxhkd &

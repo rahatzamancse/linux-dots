@@ -130,7 +130,7 @@ space
 
 # Exit visual mode
 @Escape
-	$HOME/.config/bspwm/scripts/focus-first.sh && killall -e sxhkd; polybar-msg hook window-mode 1 > /dev/null && sxhkd &
+	bspc node any.descendant_of.leaf -f && killall -e sxhkd; polybar-msg hook window-mode 1 > /dev/null && sxhkd &
 super + m
-	$HOME/.config/bspwm/scripts/focus-first.sh && killall -e sxhkd; polybar-msg hook window-mode 1 > /dev/null && sxhkd &
+	bspc node any.descendant_of.leaf -f && killall -e sxhkd; polybar-msg hook window-mode 1 > /dev/null && sxhkd &
 

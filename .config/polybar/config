@@ -8,40 +8,37 @@
           ;=====================================;
 
 [colors]
-background	= #FF1c2c43
-background-alt	= #FF0e1827
-foreground	= #FEFEFE
-foreground-alt	= #9ac4ff
-primary		= #fff
-secondary	= #a9b3c2
-alert		= #bd2c40
-
+; wpgtk colors
+background	= ${xrdb:color8:#FF1C2C43}
+background-alt	= ${xrdb:color0:#FF0e1827}
+foreground	= ${xrdb:color15:#FEFEFE}
+foreground-alt	= ${xrdb:color9:#9ac4ff}
+primary		= ${xrdb:color10:#fff}
+secondary	= ${xrdb:color1:#a9b3c2}
+alert		= ${xrdb:color9:#bd2c40}
 
 [bar/topright-extras]
-width = 20%
-height = 4%
-offset-x = 80%
-; offset-y = 0.5%
-
 monitor = ${env:MONITOR:}
 
+width = 30%
+height = 4%
+offset-x = 70%
+; offset-y = 0.5%
 radius = 5
 fixed-center = true
+border-size = 0
+padding-left = 2
+padding-right = 2
+module-margin-left = 0
+module-margin-right = 1
+bottom = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
-border-size = 0
-border-color = #000
+border-color = #000000
 
-padding-left = 2
-padding-right = 2
-
-module-margin-left = 0
-module-margin-right = 1
- 
-font = Hack Nerd Font:pixelsize=20:style=Medium Condensed
-
-bottom = false
+font-0 = BreezeSans:style=Medium Condensed
+font-1 = Material Design Icons Desktop
 
 modules-left = corona
 
@@ -49,41 +46,33 @@ modules-left = corona
 type = custom/script
 ; width = 100
 ; label = Something 
-exec = cat /tmp/corona-update || echo "Failed to update"
+exec = $HOME/.config/polybar/scripts/corona.sh
 exec-if = $HOME/.config/polybar/scripts/corona.sh
 tail = false
 interval = 10800
-
-format = <label>
-format-background = ${color.background}
-format-foreground = ${color.foreground}
-label = CORONA: %output%
-click-left = $HOME/.config/polybar/scripts/corona.sh || rm /tmp/corona-update
+click-left = $HOME/.config/polybar/scripts/corona.sh
 
 
-[bar/control]
+[bar/launcher]
 monitor = ${env:MONITOR:}
-; width = 13%
+
 width = 5.2%
 height = 4%
 offset-x = 0%:10
-offset-y = 0.65%
+offset-y = 0.5%
 radius = 22
 fixed-center = true
 bottom = true
+padding-left = 0
+padding-right = 0
+module-margin-left = 2
+module-margin-right = 2
+border-size = 0
+border-color = #000
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-border-size = 0
-border-color = #000
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 2
-module-margin-right = 2
- 
 font-0 = BreezeSans:pixelsize=14:style=Medium Condensed;4
 font-1 = Material Design Icons Desktop:pixelsize=20;5
 font-2 = BreezeSans:pixelsize=10:style=Bold Condensed;3
@@ -92,9 +81,6 @@ font-2 = BreezeSans:pixelsize=10:style=Bold Condensed;3
 modules-center = search terminal
 
 wm-restack = bspwm
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
 
 cursor-click = pointer
 cursor-scroll = default
@@ -105,19 +91,17 @@ monitor = ${env:MONITOR:}
 width = 23.5%
 height = 4.5%
 offset-x = 6%
-offset-y = 0%
+offset-y = 0.5%
 radius = 0
 fixed-center = true
 bottom = true
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
 
 background = #00000000
 foreground = ${colors.foreground}
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 0
-module-margin-right = 0
  
 font-0 = Material Design Icons Desktop:pixelsize=24;5
 font-1 = BreezeSans:pixelsize=28:style=Regular Condensed;4
@@ -129,211 +113,114 @@ wm-restack = bspwm
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
-
 cursor-click = pointer
 cursor-scroll = default
 
-[bar/music]
+
+[bar/systray]
 monitor = ${env:MONITOR:}
-width = 30%
+
+width = 5%
 height = 4%
-offset-x = 35%
-offset-y = 6%:1
+offset-x = 70%
+offset-y = 0.5%
 radius = 22
 fixed-center = true
 bottom = true
-
-background = #00191414
-foreground = #fff
-
 border-size = 0
 border-color = #000
-
-padding-left = 2
-padding-right = 2
-
-module-margin-left = 0
-module-margin-right = 0
- 
-font-0 = BreezeSans:pixelsize=16:style=Medium Condensed;2
-font-1 = Font Awesome 5 Pro:pixelsize=20:style=Solid;3
-font-2 = Font Awesome 5 Brands:pixelsize=21;3
-font-3 = SourceHanSansJP:pixelsize=14:style=Medium;2
-font-4 = Font Awesome 5 Pro:pixelsize=18:style=Solid;3
-font-5 = Hack Nerd Font:pixelsize=31:style=Medium Condensed;7
- 
-modules-center = right song left
-
-override-redirect = true
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-cursor-click = ns-resize 
-cursor-scroll = ns-resize 
-
-[bar/player]
-monitor = ${env:MONITOR:}
-width = 11%
-height = 4%
-offset-x = 44.5%
-offset-y = 0.65%
-radius = 22 
-fixed-center = true
-bottom = true
-
-background = ${colors.background-alt}
-foreground = ${colors.foreground-alt}
-
-border-size = 0
-
-padding-left = 6
-padding-right = 6
-
+padding-right = 50
 module-margin-left = 2
 module-margin-right = 3
- 
-font-0 = BreezeSans:pixelsize=16:style=Medium Condensed;2
-font-1 = Font Awesome 5 Pro:pixelsize=20:style=Regular;3
-font-2 = Font Awesome 5 Brands:pixelsize=21;3
-font-3 = SourceHanSansJP:pixelsize=14:style=Medium;2
-font-4 = Font Awesome 5 Pro:pixelsize=18:style=Solid;3
- 
-modules-left = info
-modules-center = prev toggle next
 
-wm-restack = bspwm
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-cursor-click = pointer
-cursor-scroll = default
-
-[bar/notify]
-monitor = ${env:MONITOR:}
-width = 25%
-height = 4%
-offset-x = 30%:
-offset-y = 0.65%
-radius = 22
-fixed-center = true
-bottom = true
-
-background = ${colors.background}
+background = #000000
 foreground = ${colors.foreground}
-
-border-size = 0
-border-color = #000
-
-padding-right = 5
-
-module-margin-left = 2
-module-margin-right = 3
  
-font-0 = BreezeSans:pixelsize=10:style=Bold Condensed;-10
-font-1 = BreezeSans:pixelsize=10:style=Bold Condensed;10
-font-2 = Material Design Icons Desktop:pixelsize=22;5
-font-3 = Material Design Icons Desktop:pixelsize=10;10
-font-4 = Material Design Icons Desktop:pixelsize=10;-8
-font-5 = Hack Nerd Font:pixelsize=16:style=Bold Condensed;5
+font = Material Design Icons Desktop:pixelsize=21
 
-modules-right = window-mode
-
-enable-ipc = true
-
-tray-position = center
+tray-position = right
 tray-detached = false
 ; tray-maxsize = 20
-; tray-background = 
-tray-offset-x = -20%
+tray-background = #00000000
+; tray-offset-x = -20%
 ; tray-offset-y = 0
-; tray-transparent = true
+tray-scale = 1.0
+tray-maxsize = 40
 
 ; tray-padding = 0
-tray-scale = 1.0
 
 wm-restack = bspwm
+
+modules-center = placeholder
 
 cursor-click = pointer
 cursor-scroll = default
 
-
-[module/window-mode]
-type = custom/ipc
-content = 
-hook-0 = echo %{T6}NORMAL%{T-}
-hook-1 = echo %{T6}%{F#f00}INSERT%{F-}%{T-}
-initial = 1
+[module/placeholder]
+# Just a dummy module as polybar always requires at least one amodule
+type = custom/script
+width = 1
 
 
 [bar/status]
 monitor = ${env:MONITOR:}
-width = 26%
+width = 20%
 height = 4%
-offset-x = 70%
-offset-y = 0.65%
+offset-x = 77%
+offset-y = 0.5%
 radius = 22
 fixed-center = true
 bottom = true
+border-size = 0
+padding-left = 0
+padding-right = 10%
+module-margin-left = 1
+module-margin-right = 1
 
 background = ${colors.background}
 foreground = ${colors.foreground}
-
-border-size = 0
 border-color = #000
 
-padding-left = 0
-padding-right = 6%
-
-module-margin-left = 1
-module-margin-right = 1
+font-0 = BreezeSans:pixelsize=10:style=Bold Condensed;15
+font-1 = BreezeSans:pixelsize=10:style=Bold Condensed;-10
+font-2 = BreezeSans:pixelsize=10:style=Bold Condensed;10
+font-3 = Material Design Icons Desktop:pixelsize=21;5
+font-4 = Material Design Icons Desktop:pixelsize=21
  
-font-0 = BreezeSans:pixelsize=14:style=Medium Condensed;4
-font-1 = Material Design Icons Desktop:pixelsize=21;5
-font-2 = BreezeSans:pixelsize=10:style=Bold Condensed;15
-font-3 = BreezeSans:pixelsize=10:style=Bold Condensed;-10
-font-4 = BreezeSans:pixelsize=10:style=Bold Condensed;10
-font-5 = Material Design Icons Desktop:pixelsize=21
- 
-; modules-center = cpu wlan battery bluetooth date 
-modules-right = xbacklight pulseaudio cpu wlan battery date 
+modules-right = window-mode xbacklight pulseaudio cpu wlan battery date 
 
 wm-restack = bspwm
 
 cursor-click = pointer
 cursor-scroll = default
+
+enable-ipc = true
+
 
 [bar/power]
 monitor = ${env:MONITOR:}
 width = 2.35%
 height = 4%
 offset-x = 97.7%:-10
-offset-y = 0.75%
+offset-y = 0.5%
 radius = 22
 fixed-center = true
 bottom = true
-
-background = #FE0000
-foreground = #fff
-
-border-size = 0
-border-color = #000
-
 padding-left = 5
 padding-right = 0
-
+border-size = 0
+border-color = #000
 module-margin-left = 1
 module-margin-right = 1
+
+background = #cc0000
+foreground = ${colors.foreground}
  
 font-0 = Material Design Icons Desktop:pixelsize=23;6
  
 modules-center = power-menu 
 
 wm-restack = bspwm
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
 
 cursor-click = pointer
 cursor-scroll = default
@@ -372,11 +259,19 @@ label-urgent-padding = 0
 label-empty = "%icon% "
 label-empty-padding = 0
 
+
+[module/window-mode]
+type = custom/ipc
+content = 
+hook-0 = echo "󰍹"
+hook-1 = echo %{F#f00}󱋆%{F-}
+initial = 1
+
+
 [module/xbacklight]
 type = internal/xbacklight
-format = %{T6}<ramp>%{T-}%{T3}%{O-28}<label>%{O-}%{T-}
+format = %{T5}<ramp>%{T-}%{T0}%{O-28}<label>%{O-}%{T-}
 label = "%percentage%%"
-label-foreground = ${colors.foreground}
 output = eDP1
 enable-scroll = true
 
@@ -388,13 +283,14 @@ ramp-4 = 󰃞
 ramp-5 = 󰃟
 ramp-6 = 󰃠
 
+
 [module/wlan]
 type = internal/network
 interface = ${env:PRIMARY_NETWORK_ADAPTER}
 interval = 3.0
 
 format-connected =<ramp-signal><label-connected>
-label-connected = %{T4}%upspeed%%{T-}%{O-35}%{T5}%downspeed%%{T-}
+label-connected = %{T2}%upspeed%%{T-}%{O-35}%{T3}%downspeed%%{T-}
 
 label-disconnected = 󰤭
 label-disconnected-foreground = #6c809e
@@ -404,7 +300,7 @@ ramp-signal-1 = %{F#ffd200}󰤟%{F-}
 ramp-signal-2 = 󰤢
 ramp-signal-3 = 󰤥
 ramp-signal-4 = 󰤨
-ramp-signal-foreground = ${colors.foreground-alt}
+
 
 [module/date]
 type = internal/date
@@ -412,13 +308,15 @@ interval = 60
 
 date = %a %e %b
 time = %I:%M %p
+margin-right = 100
 
-label = %date% | %time%
+foreground = ${colors.foreground}
+label = %{T3}%date%%{T-}%{O-50}%{T2}%time%%{T-}%{O-}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = %{T6}<ramp-volume>%{T-}%{T3}%{O-28}<label-volume>%{O-}%{T-}
+format-volume = %{T5}<ramp-volume>%{T-}%{T0}%{O-28}<label-volume>%{O-}%{T-}
 label-volume = "%percentage%%"
 label-volume-foreground = ${root.foreground}
 
@@ -436,10 +334,9 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging = %{T6}<animation-charging>%{T-}%{T3}%{O-24}<label-charging>%{O-}%{T-}
-format-discharging = %{T6}<ramp-capacity>%{T-}%{T3}%{O-24}<label-discharging>%{O-}%{T-}
-format-full = %{T6}󰂄%{T-}%{T3}%{O-24}100%%{O-}%{T-}
-format-full-foreground = ${colors.foreground-alt}
+format-charging = %{T5}<animation-charging>%{T-}%{T0}%{O-24}<label-charging>%{O-}%{T-}
+format-discharging = %{T5}<ramp-capacity>%{T-}%{T0}%{O-24}<label-discharging>%{O-}%{T-}
+format-full = %{T5}󰂄%{T-}%{T0}%{O-24}100%%{O-}%{T-}
 
 animation-charging-0 = 󱊤
 animation-charging-1 = 󱊥
@@ -458,8 +355,8 @@ ramp-capacity-7 = 󰂀
 ramp-capacity-8 = 󰂁
 ramp-capacity-9 = 󰂂
 ramp-capacity-10 = 󰁹 
-ramp-capacity-foreground = ${colors.foreground-alt}
 ramp-capacity-framerate = 750
+
 
 [module/browser]
 type = custom/script
@@ -486,64 +383,11 @@ type = custom/script
 exec = echo "󰨤"
 click-left = flameshot gui
 
-[module/prev]
-type = custom/script
-exec = echo "%{T5}%{T-}" &
-format = "%{F#e5efff}<label>%{F-}"
-interval = 0.5
-tail = true
-click-left = playerctl --player=spotify previous &
-
-[module/info]
-type = custom/script
-exec = echo "" &
-interval = 0.5
-tail = true
-click-left = ~/.config/polybar/scripts/info.sh 2>/dev/null &
-click-right = bspc desktop -f '^10'
-
-[module/toggle]
-type = custom/script
-exec = [[ "$(playerctl -p spotify status 2>/dev/null)" == "Playing" ]] && echo "" || echo ""
-interval = 0.2
-tail = true
-click-left = playerctl --player=spotify play-pause &
-
-[module/right]
-type = custom/text
-content-background = #00000000
-content-foreground = #df191414
-content = ""
-
-[module/song]
-type = custom/script
-exec = ~/.config/polybar/scripts/song.sh 2>/dev/null || echo "No player found"
-format = "<label>  "
-format-prefix = "%{F#1db954}   %{F-}"
-format-background = #df191414
-interval = 0.5
-tail = true
-click-left = playerctl -p spotify play-pause & 
-
-[module/left]
-type = custom/text
-content-background = #00000000
-content-foreground = #df191414
-content =""
-
-[module/next]
-type = custom/script
-exec = echo "%{T5}%{T-}" &
-format = "%{F#e5efff}<label>%{F-}"
-interval = 0.5
-tail = true
-click-left = playerctl --player=spotify next &
 
 [module/cpu]
 type = custom/script
-exec = ~/.config/polybar/scripts/cpu.sh 2> /dev/null || echo "%{T5}%{F#dae1ec}󰓦%{T4}%{O-13}󰓦%{T-}%{F-}" 
+exec = ~/.config/polybar/scripts/cpu.sh 2> /dev/null || echo "%{T2}%{F#dae1ec}󰓦%{T3}%{O-13}󰓦%{T-}%{F-}" 
 format-prefix = 󰻠
-format-foreground = ${colors.secondary}
 interval = 1
 tail = true
 click-left = $TERMINAL htop

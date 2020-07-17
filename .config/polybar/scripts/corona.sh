@@ -4,6 +4,7 @@ URL="https://corona.lmao.ninja/v2/countries/$COUNTRY"
 res=$(curl -sf "$URL")
 
 if [ -z "$res" ]; then
+	echo "Failed to update"
 	exit 1
 fi
 
@@ -14,4 +15,4 @@ new_confirmed=$(jq '.todayCases' <<< $res)
 new_death=$(jq '.todayDeaths' <<< $res)
 new_recovered=$(jq '.todayRecovered' <<< $res)
 
-echo "  $new_confirmed |  $new_death |  $new_recovered | 🆕 $total_confirmed | $total_deaths " > /tmp/corona-update
+echo "󱎶$new_confirmed | 󰚌 $new_death | 󰋑$new_recovered | 󰒠󱎶$total_confirmed | 󰒠󰚌 $total_deaths"

@@ -1,0 +1,75 @@
+[colors]
+background = "{color8}"
+foreground = "{color15}"
+
+[global]
+monitor = 0
+follow = keyboard
+
+geometry = "280-20+40"
+indicate_hidden = true
+shrink = false
+
+transparency = 0
+
+notification_height = 0
+
+separator_height = 10
+padding = 10
+horizontal_padding = 10
+frame_width = 5
+
+frame_color = "{active}"
+separator_color = auto
+
+sort = yes
+
+idle_threshold = 120
+
+font = "BreezeSans 10"
+line_height = 0
+markup = full
+format = "<big><b>%a: %s</b></big>\n%b\n%p"
+
+alignment = left
+show_age_threshold = true
+
+word_wrap = true
+ellipsize = end
+ignore_newline = no
+stack_dublicates = true
+hide_dublicates_count = false
+show_indicators = true
+
+icon_position = left
+min_icon_size = 64
+max_icon_size = 64
+icon_path = .icons/flattrcolor/status/24:.icons/flattrcolor/devices/48:.icons/flattrcolor/apps/scalable:.icons/flattrcolor/actions/scalable
+
+sticky_history = true
+history_length = 20
+
+dmenu = "/usr/bin/dmenu"
+browser = "/usr/bin/google-chrome-stable"
+
+always_run_script = false
+
+# title, class, verbosity (not recommended)
+
+startup_notification = false
+
+force_xinerama = false
+
+corner_radius = 5
+
+mouse_left_click = do_action
+mouse_right_click = close_current
+mouse_middle_click = close_all
+
+
+
+[shortcuts]
+# close = 
+# close_all = mod4+shift+m
+history = mod4+n
+context = mod4+shift+n

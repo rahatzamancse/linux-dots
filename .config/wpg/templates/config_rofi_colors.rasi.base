@@ -1,0 +1,6 @@
+configuration {{
+	color-normal:                   "{color0}, {color15}, {color0}, {color4}, {color15}";
+	color-urgent:                   "{color0}, {color11}, {color0}, {color4}, {color11}";
+	color-active:                   "{color0}, {color11}, {color0}, {color4}, {color11}";
+	color-window:                   "{color0}, {color9}, {color13}";
+}}

@@ -92,6 +92,8 @@ bspc rule -a "Gtkhash" state=floating center=true
 bspc rule -a "MEGAsync" state=floating
 bspc rule -a "Peek" state=floating
 bspc rule -a "SimpleScreenRecorder" state=floating center=true
+bspc rule -a "Wpg" state=floating center=true
+bspc rule -a "Grub-customizer" state=floating center=true
 
 ## Others (Not used)
 # bspc rule -a '*' follow=on state=pseudo_tiled
@@ -108,6 +110,15 @@ bspc rule -a "SimpleScreenRecorder" state=floating center=true
 # bspc rule -a midori private=on
 
 wmname LG3D
+
+# bspc config external_rules_command $HOME/.config/bspwm/scripts/external_rules.sh
+
+bspc subscribe node_add | \
+	threshold_width=200 \
+	threshold_height=200 \
+	minimum_tile_width=100 \
+	minimum_tile_height=100 \
+		$HOME/.config/bspwm/scripts/small-window.sh &
 
 # Autostarts are moved to .config/bspwm/autostart
 $HOME/.config/bspwm/autostart &

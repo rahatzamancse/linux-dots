@@ -1,0 +1,29 @@
+configuration {
+	width:                          60;
+	lines:                          10;
+	columns:                        1;
+	font:                           "Breeze Sans 16";
+	bw:                             10;
+	location:                       0;
+	padding:                        20;
+	yoffset:                        0;
+	xoffset:                        0;
+	fixed-num-lines:                true;
+	terminal:                       "rofi-sensible-terminal";
+	show-icons:                     true;
+	icon-theme:	 		"La Capitaine";
+	sidebar-mode:			true;
+	ssh-client:                     "ssh";
+	ssh-command:                    "{terminal} -e {ssh-client} {host}";
+	run-command:                    "{cmd}";
+	parse-hosts:                    true;
+	matching:                       "fuzzy";
+	eh:                             2;
+	scrollbar-width:                0;
+	kb-mode-next:                   "Shift+Right,Control+Tab,Alt+l";
+	kb-mode-previous:               "Shift+Left,Control+Shift+Tab,Alt+h";
+	kb-row-up:                      "Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab,Alt+k";
+	kb-row-down:                    "Down,Control+n,Alt+j";
+}
+
+@import "colors"
