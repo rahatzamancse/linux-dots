@@ -17,7 +17,7 @@ configuration {
 	ssh-command:                    "{terminal} -e {ssh-client} {host}";
 	run-command:                    "{cmd}";
 	parse-hosts:                    true;
-	matching:                       "fuzzy";
+	matching:                       "normal";
 	eh:                             2;
 	scrollbar-width:                0;
 	kb-mode-next:                   "Shift+Right,Control+Tab,Alt+l";
