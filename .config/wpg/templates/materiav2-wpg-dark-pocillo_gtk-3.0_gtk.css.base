@@ -6466,3 +6466,4 @@ read if you used those and something break with a version upgrade you're on your
 FIXME this is really an API */
 @define-color content_view_bg {color0};
 @define-color placeholder_text_color #b4b5b8;
+

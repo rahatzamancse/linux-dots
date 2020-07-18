@@ -15,5 +15,5 @@ bspc config presel_feedback_color $(getxcolor color6)
 dunst &
 
 # Updating betterlockscreen
-betterlockscreen -u .config/wpg/.current &
+betterlockscreen -u .config/wpg/.current > /dev/null &
 

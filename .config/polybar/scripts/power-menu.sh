@@ -5,7 +5,7 @@
 ## Github : @adi1090x
 ## Reddit : @adi1090x
 
-rofi_command="rofi -theme $HOME/.config/polybar/scripts/color.rasi"
+rofi_command="rofi -theme $HOME/.config/polybar/scripts/power-menu.rasi -eh 1 -no-show-icons"
 
 # Options
 shutdown="󰐥"
