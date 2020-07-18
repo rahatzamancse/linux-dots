@@ -1,6 +1,6 @@
 configuration {
-	color-normal:                   "#000000, #fffffb, #000000, #75919B, #fffffb";
-	color-urgent:                   "#000000, #ffeccf, #000000, #75919B, #ffeccf";
-	color-active:                   "#000000, #ffeccf, #000000, #75919B, #ffeccf";
-	color-window:                   "#000000, #c6ffff, #c7f8ff";
+	color-normal:                   "#0a0609, #fdffff, #0a0609, #627490, #fdffff";
+	color-urgent:                   "#0a0609, #deb27c, #0a0609, #627490, #deb27c";
+	color-active:                   "#0a0609, #deb27c, #0a0609, #627490, #deb27c";
+	color-window:                   "#0a0609, #ff4250, #e18160";
 }

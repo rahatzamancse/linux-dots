@@ -12,19 +12,19 @@
 # order to not mess up the dark theme.
 
 # Text/base
-gtk-color-scheme = "text_color:#eeeeee\nbase_color:#09090a"
+gtk-color-scheme = "text_color:#eeeeee\nbase_color:#0a0609"
 # Foreground/background
-gtk-color-scheme = "fg_color:#eeeeee\nbg_color:#09090a"
+gtk-color-scheme = "fg_color:#eeeeee\nbg_color:#0a0609"
 # Selected foreground/background
-gtk-color-scheme = "selected_fg_color:#eeeeee\nselected_bg_color:#78cb89"
+gtk-color-scheme = "selected_fg_color:#eeeeee\nselected_bg_color:#8f6d6d"
 # Titlebar foreground/background
-gtk-color-scheme = "titlebar_fg_color:#eeeeee\ntitlebar_bg_color:#202024"
+gtk-color-scheme = "titlebar_fg_color:#eeeeee\ntitlebar_bg_color:#2a1725"
 # Menus
-gtk-color-scheme = "menu_color:#09090a"
+gtk-color-scheme = "menu_color:#0a0609"
 # Tooltips foreground/background
-gtk-color-scheme = "tooltip_fg_color:#eeeeee\ntooltip_bg_color:#4D7594"
+gtk-color-scheme = "tooltip_fg_color:#eeeeee\ntooltip_bg_color:#627490"
 # Links
-gtk-color-scheme = "link_color:#78cb89\nvisited_link_color:#6ccdf9"
+gtk-color-scheme = "link_color:#8f6d6d\nvisited_link_color:#88434d"
 
 # Set GTK settings
 gtk-auto-mnemonics              = 1
@@ -34,3 +34,4 @@ gtk-primary-button-warps-slider = 1
 include "main.rc"
 include "apps.rc"
 include "hacks.rc"
+
