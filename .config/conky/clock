@@ -1,0 +1,44 @@
+conky.config = {
+	background = false,
+	use_xft = true,
+	update_interval = 60,
+	update_interval_on_battery = 60,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_type = 'desktop',
+	own_window_argb_visual = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	-- double_buffer yes
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+	stippled_borders = 0,
+	border_width = 0,
+	default_color = '#000000',
+	default_shade_color = '#000000',
+	default_outline_color = '#000000',
+	-- minimum_size 450
+	-- maximum_width 400
+	gap_x = 20,
+	gap_y = 20,
+	alignment = 'top_left',
+	no_buffers = true,
+	uppercase = false,
+	color1 = '#A2C66E',
+	color2 = '#C7C7C7',
+	color3 = '#7CA642',
+	color4 = '#D6D6D8',
+	color5 = '#CB1215',
+	color6 = '#7CA642',
+	color7 = '#C0D343',
+};
+
+conky.text = [[
+	${color4}${font Pincoyablack:size=65}${time %H}${color4}${font Pincoyablack:weight=Thin:size=65}:${time %M}${font}
+	${color6}${font Pincoyablack:size=30}${voffset -65}${offset 170}${time %A}${font}
+	${font Pincoyablack:weight=Light:size=30}${voffset 0}${offset 170}${time %d %B}${font}${color2}
+	${color4}$hr
+	${color4}${font Pincoyablack:size=50}${color5}inSane ${color4}Shadow
+]];

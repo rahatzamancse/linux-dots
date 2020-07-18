@@ -29,7 +29,8 @@ greenclip daemon &
 ibus-daemon -d
 
 ## formerly compton compositor
-picom -b &
+# picom --config $HOME/.config/picom/picom.conf -b &
+picom --config $HOME/.config/picom/ibhagwan-picom.conf -b &
 
 ## Autostart manager
 ## Check `dex -ad` to see what starts here
@@ -48,6 +49,9 @@ sleep 1 && dunstify -a "insane-PC" -u low "Welcome" "1nsane \$hadow & GULU" &
 
 # Updating betterlockscreen
 betterlockscreen -u .config/wpg/.current &
+
+# Conky
+conky -c $HOME/.config/conky/clock -d &
 
 # Keyboard binder
 sxhkd &

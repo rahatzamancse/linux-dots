@@ -4,9 +4,11 @@
 export XCURSOR_SIZE=64
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-# XDG variables
+# XDG variables, see https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_DATA_DIRS="/usr/local/share/:/usr/share/"
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_DIRS="/etc/xdg"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # File locations
