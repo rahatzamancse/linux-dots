@@ -1,6 +1,6 @@
 configuration {
-	color-normal:                   "#211923, #ffffe5, #211923, #9E6A4A, #ffffe5";
-	color-urgent:                   "#211923, #ffb245, #211923, #9E6A4A, #ffb245";
-	color-active:                   "#211923, #ffb245, #211923, #9E6A4A, #ffb245";
-	color-window:                   "#211923, #ff9144, #ffd17a";
+	color-normal:                   "#07040C, #ecefff, #07040C, #2C4CAA, #ecefff";
+	color-urgent:                   "#07040C, #fccb77, #07040C, #2C4CAA, #fccb77";
+	color-active:                   "#07040C, #fccb77, #07040C, #2C4CAA, #fccb77";
+	color-window:                   "#07040C, #e24d40, #b7d6ff";
 }

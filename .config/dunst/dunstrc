@@ -1,6 +1,6 @@
 [colors]
-background = "#3c2d40"
-foreground = "#ffffe5"
+background = "#1c0e33"
+foreground = "#ecefff"
 
 [global]
 monitor = 0
@@ -19,7 +19,7 @@ padding = 10
 horizontal_padding = 10
 frame_width = 5
 
-frame_color = "#cb8e37"
+frame_color = "#2248bb"
 separator_color = auto
 
 sort = yes
