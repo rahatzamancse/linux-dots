@@ -64,9 +64,9 @@ bspc config ignore_ewmh_focus true
 ## Some applications specific predefined rules
 # Auto start applications
 bspc rule -a TelegramDesktop --one-shot desktop='^9' follow=off
-bspc rule -a vimb:facebook --one-shot desktop='^9' follow=off
 bspc rule -a MineTime --one-shot desktop='^8' follow=off
 bspc rule -a Mailspring --one-shot desktop='^8' follow=off
+bspc rule -a Google-chrome:facebook.com --one-shot desktop='^9' follow=off
 
 ## Regular applications
 bspc rule -a Gcolor3 state=floating center=true
