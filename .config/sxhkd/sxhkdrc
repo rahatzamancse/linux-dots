@@ -70,6 +70,7 @@ super + Print
 	mkdir -p $HOME/Pictures && flameshot full -p $HOME/Pictures
 
 
+
 ##  
 ##   ____                                        _                           _     
 ##  |  _ \ _ __ ___   __ _ _ __ __ _ _ __ ___   | |    __ _ _   _ _ __   ___| |__  
@@ -104,8 +105,16 @@ super + d
 	$HOME/.config/rofi/dots.sh
 
 # Open dotfiles with rofi
-ctrl + alt + e
+super + r ; e
 	rofimoji
+
+# Rofi-search
+super + r; s
+	GOOGLE_ARGS='["--count", 10]' rofi -modi blocks -blocks-wrap rofi-search -show blocks -lines 5 -eh 4 -kb-custom-1 'Control+y'
+
+# Rofi-top
+super + r; t
+	rofi -modi top -show top -eh 1 -kb-custom-1 'Alt+m' -kb-custom-5 'Alt+c'
 
 # Record webcam (mpv)
 ctrl + alt + r
