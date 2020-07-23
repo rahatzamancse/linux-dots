@@ -49,26 +49,24 @@
 ##
 
 # Only reload keyboard shortcuts with sxhkd
-super + Escape
+super + shift + Escape
 	pkill -u $USER -USR1 -x sxhkd && dunstify -r 500 "SXHKD" "config reloaded"
 
 # quit/restart bspwm
 super + shift + {q,r}
-	bspc {quit,wm -r} && dunstify -r 500 "BSPWM" "WM reloaded"
+	bspc {quit,wm -r}
 
 # close and a kill window
 super + {_,shift + }w
 	bspc node -{c,k}
 
+# Lock the screen
 super + Delete
 	betterlockscreen -l
 
-# Screenshot
-Print
-	flameshot gui
-super + Print
-	mkdir -p $HOME/Pictures && flameshot full -p $HOME/Pictures
-
+# Toggle window compositor
+super + ctrl + shift + p
+	{pkill picom,picom --config $HOME/.config/picom/ibhagwan-picom.conf -b &}
 
 
 ##  
@@ -87,10 +85,9 @@ super + Return
 super + space
 	$LAUNCHER
 
-# Goto Browser, open if not exists
-## TODO: NOT COMPLETE(need to implement)
+# Goto last active Browser, open if not exists
 super + b
-	$BROWSER
+	xdotool search --classname "google-chrome" exec xdo activate -n "google-chrome" || $BROWSER &
 
 # Create new browser window
 super + shift + b
@@ -98,6 +95,10 @@ super + shift + b
 
 # Explorer
 super + e
+	$EXPLORER
+
+# Explorer (new window)
+super + shift + e
 	$EXPLORER -w
 
 # Open dotfiles with rofi
@@ -120,6 +121,12 @@ super + r; t
 ctrl + alt + r
 	mpv --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg av://v4l2:/dev/video0 --profile=low-latency --stream-record=$HOME/Videos/mpv-recs_$(date '+%Y-%m-%d_%H-%M-%S').mp4
 
+# Screenshot
+Print
+	flameshot gui
+super + Print
+	mkdir -p $HOME/Pictures && flameshot full -p $HOME/Pictures
+
 
 ##  
 ##  __        ___           _                 _____                    
@@ -131,14 +138,18 @@ ctrl + alt + r
 
 # Focus window by direction, works with multithread
 super + {h,j,k,l}
-	if ! bspc node -f {west,south,north,east}; then bspc monitor -f {west,south,north,east}; fi
+	dir={west,south,north,east};if ! bspc node -f $dir; then bspc monitor -f $dir; fi
 super + {Left,Down,Up,Right}
-	if ! bspc node -f {west,south,north,east}; then bspc monitor -f {west,south,north,east}; fi
+	dir={west,south,north,east};if ! bspc node -f $dir; then bspc monitor -f $dir; fi
 
-# Go to last desktop
+# Go to last monitor
+super + Escape
+	bspc monitor -f last
+
+# Go to last desktop in current monitor
 super + grave
-	bspc desktop -f last
-	
+	bspc desktop -f last.local
+
 # Go to last window in current desktop
 super + Tab
 	bspc node -f last.local
@@ -156,9 +167,9 @@ super + Tab
 # These are single (focused) window operations
 # Toggle tiling mode of window
 super + t
-	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
+	bspc node -t "~floating"
 super + button2
-	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
+	{bspc node -t "~floating"
 
 # Make pseudo tiled
 super + shift + t
@@ -176,6 +187,11 @@ super + shift + {h,j,k,l}
 	$HOME/.config/bspwm/scripts/windowmover.sh {west,south,north,east}
 super + shift + {Left,Down,Up,Right}
 	$HOME/.config/bspwm/scripts/windowmover.sh {west,south,north,east}
+
+super + shift + ctrl + {h,j,k,l}
+	bspc node -m {west,south,north,east} -f
+super + shift + ctrl + {Left,Down,Up,Right}
+	bspc node -m {west,south,north,east} -f
 
 
 ##  
@@ -201,7 +217,7 @@ super + f
 super + shift + f 
 	bspc node -t {fullscreen,tiled}	
 
-# Force all windows of the desktop to tile/float # TODO: will create a toggle later
+# Force all windows of the desktop to tile/float
 super + alt + {t,f}
 	for window in $(bspc query -N -d focused); do bspc node $window -t {tiled,floating}; done
 

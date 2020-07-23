@@ -2,19 +2,21 @@
 
 # Cleanup BSPWM rules
 bspc rule -r "*"
+xrandr --auto
+# bspc rule -a "*" state=floating
 
 # Some variables
-BSPWM_GAP=10
+WINDOW_GAP=10
 TOP_GAP=5
 BOTTOM_GAP=5
 LEFT_GAP=5
 RIGHT_GAP=5
 
-bspc config window_gap $BSPWM_GAP;
-bspc config top_padding $((-$BSPWM_GAP+$TOP_GAP))
-bspc config left_padding $((-$BSPWM_GAP+$LEFT_GAP))
-bspc config right_padding $((-$BSPWM_GAP+$RIGHT_GAP))
-bspc config bottom_padding $((-$BSPWM_GAP+$BOTTOM_GAP))
+bspc config window_gap $WINDOW_GAP;
+bspc config top_padding $((-$WINDOW_GAP+$TOP_GAP))
+bspc config left_padding $((-$WINDOW_GAP+$LEFT_GAP))
+bspc config right_padding $((-$WINDOW_GAP+$RIGHT_GAP))
+bspc config bottom_padding $((-$WINDOW_GAP+$BOTTOM_GAP))
 
 bspc config borderless_monocle true
 bspc config gapless_monocle false
@@ -24,7 +26,7 @@ bspc config left_monocle_padding -$LEFT_GAP
 bspc config right_monocle_padding -$RIGHT_GAP
 bspc config bottom_monocle_padding -$BOTTOM_GAP
 
-eval $(xrandr --listmonitors | awk 'BEGIN{count=0} NR>1 {count=count+1;print "MONITOR_"count"="$NF}')
+eval $($HOME/.local/bin/get-mons.sh)
 
 bspc monitor $MONITOR_1 -d I II III IV V VI VII VIII IX X 
 if [ ! -z $MONITOR_2 ]; then
@@ -109,7 +111,13 @@ bspc rule -a "Grub-customizer" state=floating center=true
 # bspc rule -a firefox private=on
 # bspc rule -a midori private=on
 
-wmname LG3D
+# Solution for java applications problems
+# But this creates for problems for docks, planks and window switchers.
+# wmname LG3D
+
+# Found a better solution to export this
+# Works awsomely
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # bspc config external_rules_command $HOME/.config/bspwm/scripts/external_rules.sh
 

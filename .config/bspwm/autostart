@@ -1,7 +1,8 @@
 #! /bin/bash
 
 # Processes that should run only single instance
-SINGLE_INSTANCES=(vimb sxhkd polybar flameshot dunst picom udiskie greenclip ibus-daemon)
+xdo close -N "Google-chrome" -n "facebook.com"
+SINGLE_INSTANCES=(xfce4-panel conky vimb sxhkd polybar flameshot dunst picom udiskie greenclip ibus-daemon xfce-polkit)
 # Kill everything that ran before
 for name in ${SINGLE_INSTANCES[@]}; do
 	killall -q $name
@@ -15,9 +16,6 @@ done
 # Maintains the root window (the background) and its behaviour.
 xsetroot -cursor_name left_ptr &
 xset r rate 280 25
-
-# Screen shot purpose
-flameshot &
 
 ## systemd automount removable drives
 udiskie &
@@ -34,7 +32,13 @@ picom --config $HOME/.config/picom/ibhagwan-picom.conf -b &
 
 ## Autostart manager
 ## Check `dex -ad` to see what starts here
-dex -a
+dex -a --environment bspwm
+
+/usr/bin/gnome-keyring-daemon --start --components=pkcs11 &
+/usr/bin/gnome-keyring-daemon --start --components=secrets &
+/usr/bin/gnome-keyring-daemon --start --components=ssh &
+sh -c GDK_BACKEND=x11 pamac-tray &
+xfsettingsd &
 
 # Polybar
 $HOME/.config/polybar/autostart &
@@ -42,6 +46,7 @@ $HOME/.config/polybar/autostart &
 # Notification daemon
 dunst &
 
+# Random wallpaper colors with wpgtk
 wpg -m
 
 ## Welcom message
@@ -52,6 +57,9 @@ betterlockscreen -u .config/wpg/.current &
 
 # Conky
 conky -c $HOME/.config/conky/clock -d &
+
+# DOCK
+xfce4-panel --disable-wm-check &
 
 # Keyboard binder
 sxhkd &

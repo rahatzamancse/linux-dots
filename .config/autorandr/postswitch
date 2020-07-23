@@ -1,1 +1,0 @@
-bspc wm -r && dunstify "Monitor settings changed" "$AUTORANDR_CURRENT_PROFILE"

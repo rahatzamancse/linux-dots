@@ -8,11 +8,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 eval $($HOME/.local/bin/get-mons.sh)
 
-function intdiv() {
-	echo "($1*$2+0.5)/1" | bc
-}
-
-bspc config -m $MONITOR_1 bottom_padding $(($(bspc config bottom_padding)+$(intdiv $HEIGHT_1 0.05)))
+bspc config -m $MONITOR_1 bottom_padding $(($(bspc config bottom_padding)+35))
 
 MONITOR=$MONITOR_1 polybar launcher &
 MONITOR=$MONITOR_1 polybar workspace &
@@ -21,7 +17,7 @@ MONITOR=$MONITOR_1 polybar status &
 MONITOR=$MONITOR_1 polybar power &
 
 if [ ! -z $MONITOR_2 ]; then
-	bspc config -m $MONITOR_2 bottom_padding $(($(bspc config bottom_padding)+$(intdiv $HEIGHT_2 0.05)))
+	bspc config -m $MONITOR_2 bottom_padding $(($(bspc config bottom_padding)+45))
 	MONITOR=$MONITOR_2 polybar topright-extras &
 	MONITOR=$MONITOR_2 polybar workspace &
 
@@ -29,6 +25,3 @@ if [ ! -z $MONITOR_2 ]; then
 else
 	MONITOR=$MONITOR_1 polybar topright-extras &
 fi
-
-### Set proper padding/margin to each other monitors
-# TODO

@@ -20,10 +20,10 @@ alert		= ${xrdb:color9:#bd2c40}
 [bar/topright-extras]
 monitor = ${env:MONITOR:}
 
-width = 30%
-height = 4%
-offset-x = 70%
-; offset-y = 0.5%
+width = 400
+height = 25
+offset-x = 100%:-405
+; offset-y = 5
 radius = 5
 fixed-center = true
 border-size = 0
@@ -42,6 +42,7 @@ font-1 = Material Design Icons Desktop
 
 modules-left = corona
 
+
 [module/corona]
 type = custom/script
 ; width = 100
@@ -56,11 +57,11 @@ click-left = $HOME/.config/polybar/scripts/corona.sh
 [bar/launcher]
 monitor = ${env:MONITOR:}
 
-width = 5.2%
-height = 4%
-offset-x = 0%:10
-offset-y = 0.5%
-radius = 22
+width = 80
+height = 35
+offset-x = 5
+offset-y = 5
+radius = 18
 fixed-center = true
 bottom = true
 padding-left = 0
@@ -73,9 +74,7 @@ border-color = #000
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-font-0 = BreezeSans:pixelsize=14:style=Medium Condensed;4
-font-1 = Material Design Icons Desktop:pixelsize=20;5
-font-2 = BreezeSans:pixelsize=10:style=Bold Condensed;3
+font-0 = Material Design Icons Desktop:pixelsize=20;5
  
 ; modules-center = search screenshot file-man terminal browser
 modules-center = search terminal
@@ -88,10 +87,10 @@ cursor-scroll = default
 
 [bar/workspace]
 monitor = ${env:MONITOR:}
-width = 23.5%
-height = 4.5%
-offset-x = 6%
-offset-y = 0.5%
+width = 400
+height = 50
+offset-x = 100
+offset-y = -5
 radius = 0
 fixed-center = true
 bottom = true
@@ -103,9 +102,9 @@ module-margin-right = 0
 background = #00000000
 foreground = ${colors.foreground}
  
-font-0 = Material Design Icons Desktop:pixelsize=24;5
-font-1 = BreezeSans:pixelsize=28:style=Regular Condensed;4
-font-2 = Material Design Icons Desktop:pixelsize=18;-10
+font-0 = Material Design Icons Desktop:pixelsize=22;5
+font-1 = BreezeSans:pixelsize=26:style=Regular Condensed;4
+font-2 = Material Design Icons Desktop:pixelsize=14;-10
  
 modules-center = bspwm
 
@@ -120,32 +119,30 @@ cursor-scroll = default
 [bar/systray]
 monitor = ${env:MONITOR:}
 
-width = 5%
-height = 4%
-offset-x = 70%
-offset-y = 0.5%
-radius = 22
+width = 400
+height = 35
+offset-x = 100%:-830
+offset-y = 5
+radius = 0
 fixed-center = true
 bottom = true
 border-size = 0
 border-color = #000
-padding-right = 50
-module-margin-left = 2
-module-margin-right = 3
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
 
-background = #000000
+background = #00000000
 foreground = ${colors.foreground}
  
-font = Material Design Icons Desktop:pixelsize=21
-
 tray-position = right
 tray-detached = false
 ; tray-maxsize = 20
 tray-background = #00000000
-; tray-offset-x = -20%
-; tray-offset-y = 0
+; tray-offset-x = 
+; tray-offset-y = 
 tray-scale = 1.0
-tray-maxsize = 40
+tray-maxsize = 24
 
 ; tray-padding = 0
 
@@ -156,6 +153,7 @@ modules-center = placeholder
 cursor-click = pointer
 cursor-scroll = default
 
+
 [module/placeholder]
 # Just a dummy module as polybar always requires at least one amodule
 type = custom/script
@@ -164,16 +162,16 @@ width = 1
 
 [bar/status]
 monitor = ${env:MONITOR:}
-width = 20%
-height = 4%
-offset-x = 77%
-offset-y = 0.5%
-radius = 22
+width = 370
+height = 35
+offset-x = 100%:-425
+offset-y = 5
+radius = 18
 fixed-center = true
 bottom = true
 border-size = 0
 padding-left = 0
-padding-right = 10%
+padding-right = 5
 module-margin-left = 1
 module-margin-right = 1
 
@@ -182,10 +180,10 @@ foreground = ${colors.foreground}
 border-color = #000
 
 font-0 = BreezeSans:pixelsize=10:style=Bold Condensed;15
-font-1 = BreezeSans:pixelsize=10:style=Bold Condensed;-10
+font-1 = BreezeSans:pixelsize=10:style=Bold Condensed;-7
 font-2 = BreezeSans:pixelsize=10:style=Bold Condensed;10
-font-3 = Material Design Icons Desktop:pixelsize=21;5
-font-4 = Material Design Icons Desktop:pixelsize=21
+font-3 = Material Design Icons Desktop:pixelsize=18;5
+font-4 = Material Design Icons Desktop:pixelsize=18
  
 modules-right = window-mode xbacklight pulseaudio cpu wlan battery date 
 
@@ -199,11 +197,11 @@ enable-ipc = true
 
 [bar/power]
 monitor = ${env:MONITOR:}
-width = 2.35%
-height = 4%
-offset-x = 97.7%:-10
-offset-y = 0.5%
-radius = 22
+width = 35
+height = 35
+offset-x = 100%:-50
+offset-y = 5
+radius = 18
 fixed-center = true
 bottom = true
 padding-left = 5
@@ -227,6 +225,7 @@ cursor-scroll = default
 
 click-left = ~/.config/polybar/scripts/power-menu.sh &
 
+
 [module/bspwm]
 type = internal/bspwm
 
@@ -235,14 +234,14 @@ enable-scroll = false
 
 ws-icon-0 = I;%{F#fefefe}󰆍%{F-}
 ws-icon-1 = II;%{F#1EBBEE}󰇧%{F-}
-ws-icon-2 = III;%{F#ff004b}󰄘%{F-}
-ws-icon-3 = IV;%{F#ffca00}󰇰%{F-}
-ws-icon-4 = V;%{F#1164f1}󰹻%{F-}
+ws-icon-2 = III;%{F#ff004b}󰫔%{F-}
+ws-icon-3 = IV;%{F#ffca00}󰊠%{F-}
+ws-icon-4 = V;%{F#1164f1}󰄘%{F-}
 ws-icon-5 = VI;%{F#c46a4b}󰉨%{F-}
 ws-icon-6 = VII;%{F#ff93aa}󰿁%{F-}
-ws-icon-7 = VIII;%{F#FF8C00}󰊠%{F-}
+ws-icon-7 = VIII;%{F#FF8C00}󰇰%{F-}
 ws-icon-8 = IX;%{F#d448ff}󰆉%{F-}
-ws-icon-9 = X;%{F#21cd5f}󰫔%{F-}
+ws-icon-9 = X;%{F#21cd5f}󰹻%{F-}
 ws-icon-default =%{F#9e43ba}󰗹%{F-}
 
 format = "<label-state>" 
@@ -313,6 +312,7 @@ margin-right = 100
 foreground = ${colors.foreground}
 label = %{T3}%date%%{T-}%{O-50}%{T2}%time%%{T-}%{O-}
 
+
 [module/pulseaudio]
 type = internal/pulseaudio
 
@@ -363,20 +363,24 @@ type = custom/script
 exec = echo "󰊯"
 click-left = $BROWSER &
 
+
 [module/terminal]
 type = custom/script
 exec = echo "󰅬"
 click-left = $TERMINAL &
+
 
 [module/file-man]
 type = custom/script
 exec = echo "󰉋"
 click-left = $EXPLORER &
 
+
 [module/search]
 type = custom/script
 exec = echo "󱁴"
 click-left = $LAUNCHER
+
 
 [module/screenshot]
 type = custom/script
@@ -401,9 +405,10 @@ interval = 0.5
 tail = true
 click-left = ~/.config/polybar/scripts/bluetooth-status.sh -t &
 
+
 [module/power-menu]
-type = custom/script
-exec = echo "󰐥 "
+type = custom/text
+content = 󰐥
 
 [global/wm]
 margin-top = -100%
