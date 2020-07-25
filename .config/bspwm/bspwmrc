@@ -2,7 +2,6 @@
 
 # Cleanup BSPWM rules
 bspc rule -r "*"
-xrandr --auto
 # bspc rule -a "*" state=floating
 
 # Some variables

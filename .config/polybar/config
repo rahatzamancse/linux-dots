@@ -110,8 +110,8 @@ modules-center = bspwm
 
 wm-restack = bspwm
 
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
+scroll-up = bspwm-deskprev
+scroll-down = bspwm-desknext
 cursor-click = pointer
 cursor-scroll = default
 

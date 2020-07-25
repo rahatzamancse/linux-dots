@@ -23,20 +23,16 @@ export GOPATH="$XDG_DATA_HOME"/go
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
-# VIM
-export VIMINIT='source $MYVIMRC'
-export MYVIMRC='$HOME/.config/vimrc'
-
 # Other configs locations
 export LESSHISTFILE=$HOME/.cache/lesshst
 
 # My defaults
-export GUI_EDITOR=/usr/bin/vim
+export GUI_EDITOR=/usr/bin/nvim
 export BROWSER=/usr/bin/google-chrome-stable
 export TERM=xterm-kitty
 export TERMINAL=/usr/bin/kitty
-export VISUAL=/usr/bin/vim
-export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/nvim
+export EDITOR=/usr/bin/nvim
 export EXPLORER=/usr/bin/nautilus
 export LAUNCHER=$HOME/.config/rofi/launch.sh
 

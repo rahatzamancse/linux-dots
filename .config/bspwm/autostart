@@ -12,6 +12,18 @@ for name in ${SINGLE_INSTANCES[@]}; do
 	while pgrep -u $UID -x $name > /dev/null; do sleep 1; done
 done
 
+xfsettingsd &
+xrandr --auto
+
+## Autostart manager
+## Check `dex -ad` to see what starts here
+dex -a --environment bspwm
+
+/usr/bin/gnome-keyring-daemon --start --components=pkcs11 &
+/usr/bin/gnome-keyring-daemon --start --components=secrets &
+/usr/bin/gnome-keyring-daemon --start --components=ssh &
+sh -c GDK_BACKEND=x11 pamac-tray &
+
 # Setting mouse icon type in the background (root window)
 # Maintains the root window (the background) and its behaviour.
 xsetroot -cursor_name left_ptr &
@@ -29,16 +41,6 @@ ibus-daemon -d
 ## formerly compton compositor
 # picom --config $HOME/.config/picom/picom.conf -b &
 picom --config $HOME/.config/picom/ibhagwan-picom.conf -b &
-
-## Autostart manager
-## Check `dex -ad` to see what starts here
-dex -a --environment bspwm
-
-/usr/bin/gnome-keyring-daemon --start --components=pkcs11 &
-/usr/bin/gnome-keyring-daemon --start --components=secrets &
-/usr/bin/gnome-keyring-daemon --start --components=ssh &
-sh -c GDK_BACKEND=x11 pamac-tray &
-xfsettingsd &
 
 # Polybar
 $HOME/.config/polybar/autostart &
