@@ -127,6 +127,10 @@ Print
 super + Print
 	mkdir -p $HOME/Pictures && flameshot full -p $HOME/Pictures
 
+# Screen Reader
+super + ctrl + Print
+	$HOME/.config/rofi/screen-read.sh
+
 
 ##  
 ##  __        ___           _                 _____                    
