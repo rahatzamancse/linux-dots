@@ -5,7 +5,7 @@ APP_NAME="Screen Reader"
 
 export LC_ALL=en_US.UTF-8
 
-LANG="$(echo -e "eng\nita\ndeu\nben" | rofi -dmenu -no-custom)"
+LANG="$(echo -e "eng\nita\ndeu\nben\njpn" | rofi -dmenu -no-custom)"
 if [ -z "$LANG" ]; then 
 	dunstify -a "$APP_NAME" "Invalid Language" 
 	exit 1

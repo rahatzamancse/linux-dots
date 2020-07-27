@@ -21,6 +21,9 @@ Plug 'airblade/vim-gitgutter'
 " Comments
 Plug 'tpope/vim-commentary'
 
+" sxhkdrc file support
+Plug 'kovetskiy/sxhkd-vim'
+
 call plug#end()
 
 if plug_install

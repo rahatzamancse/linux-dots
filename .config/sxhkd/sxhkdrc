@@ -69,6 +69,11 @@ super + ctrl + shift + p
 	{pkill picom,picom --config $HOME/.config/picom/ibhagwan-picom.conf -b &}
 
 
+# Toggle window compositor
+super + ctrl + w
+	wpg -m
+
+
 ##  
 ##   ____                                        _                           _     
 ##  |  _ \ _ __ ___   __ _ _ __ __ _ _ __ ___   | |    __ _ _   _ _ __   ___| |__  
