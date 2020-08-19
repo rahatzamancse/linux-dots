@@ -1,6 +1,6 @@
 # My Linux [dotfiles](https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory)
 
-This is the main dotfile I use with my [BSWM](https://github.com/baskerville/bspwm). **See live demo here**
+This is the main dotfile I use with my [BSWM](https://github.com/baskerville/bspwm). **[See live demo here](https://youtu.be/ymmVCshHyGE)**
 
 <br>
 
