@@ -5,6 +5,10 @@ HISTSIZE=500
 HISTFILESIZE=100000
 SAVEHIST=100
 
+# Set $PATH if ~/.local/bin exist
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH=$HOME/.local/bin:$PATH
+fi
 
 ## Options section
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
@@ -54,7 +58,11 @@ bindkey '^[[1;5C' forward-word                                  #
 bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
 bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
-## Alias section 
+## Alias section
+# Add useful aliases
+alias grubup="sudo update-grub"
+alias orphaned="sudo pacman -Rns $(pacman -Qtdq)"
+alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
