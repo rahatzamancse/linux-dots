@@ -27,18 +27,8 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export LESSHISTFILE=$HOME/.cache/lesshst
 
 # My defaults
-export GUI_EDITOR=/usr/bin/nvim
 export BROWSER=/usr/bin/google-chrome-stable
-export TERM=xterm-kitty
-export TERMINAL=/usr/bin/kitty
-export VISUAL=/usr/bin/nvim
-export EDITOR=/usr/bin/nvim
 export EXPLORER=/usr/bin/nautilus
-export LAUNCHER=$HOME/.config/rofi/launch.sh
-
-# Primary network adapter name
-# Can be found with `ip addr`
-export PRIMARY_NETWORK_ADAPTER=wlp2s0
 
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx
