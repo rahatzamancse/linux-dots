@@ -46,7 +46,6 @@ meld
 nautilus-admin
 nautilus-compare
 nautilus-copy-path
-nautilus-empty-file
 neofetch
 nethogs
 nodejs

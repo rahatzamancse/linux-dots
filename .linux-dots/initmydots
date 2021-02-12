@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ### Installing script dependencies
+# base-devel to build from AUR
+sudo pacman -Sy --needed base-devel
 # Installing PARU
-sudo pacman -Sy
-sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
@@ -21,13 +21,14 @@ $dotfiles config --local status.showUntrackedFiles no
 
 # Moving existing important rc files to a safe place
 affectedfiles=$($dotfiles ls-files -dm -- ~ | sort -u)
-echo $affectedfiles
 [[ ! -z "$affectedfiles" ]] && cp -v $affectedfiles -t $HOME/rcbackup/
 [ -f $HOME/.zshrc ] && mv $HOME/.zshrc $HOME/rcbackup/
+
+# Home configs go brrrr...
 $dotfiles checkout -f
 
 # Installing other deps
-cat $HOME/.linux-dots/deps.txt | paru -S -
+cat $HOME/.linux-dots/deps.txt | paru -S --needed -
 
 ### Removing Bloats
 bloats=(
@@ -83,7 +84,7 @@ else
     installmypkgs=${installmypkgs//|/ }
 
     # Install the selected packages, or just upgrade system
-    paru -Syu --needed ${installmypkgs[@]}
+    paru -S --needed ${installmypkgs[@]}
 fi
 
 ### Removing Orphan packages
@@ -94,10 +95,14 @@ else
 fi
 
 ### Adding wallpapers
-wallzipid=$(zenity --entry --text "Please Enter the wallpaper zip google drive file ID")
-walldir=$(zenity --file-selection --title="Choose a directory for your wallpapers" --directory)
-echo "Downloading wallpapers: ${walldir}"
-gdown "https://drive.google.com/uc?id=$wallzipid" 
+if zenity --question --text="Do you want to download wallpapers from Google Drive as zip?"; then
+    wallzipid=$(zenity --entry --text "Please Enter the wallpaper zip google drive file ID")
+    walldir=$(zenity --file-selection --title="Choose a directory for your wallpapers" --directory)
+    echo "Downloading wallpapers: ${walldir}"
+    gdown "https://drive.google.com/uc?id=$wallzipid" 
+else
+    echo "Not Downloading wallpapers"
+fi
 
 
 echo "Now please reboot your machine"
