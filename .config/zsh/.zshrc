@@ -74,7 +74,7 @@ alias putu="echo 'Rahat'"
 alias rahat="echo 'Putu'"
 alias fucking='sudo'
 alias ls=lsd
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dots-git/git-control/.git --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.linux-dots/.git --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no
 alias rmpclock='sudo rm /var/lib/pacman/db.lck'
 alias diff=vimdiff

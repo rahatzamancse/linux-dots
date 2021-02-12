@@ -22,7 +22,7 @@ This is the main dotfile I use with my Gnome Desktop Environment.
 
 The overall flow of how you login and how all the scripts are ran is shown in the below picture.
 
-![linux-flow](./.dots-git/linux-dots-flow.jpg)
+![linux-flow](./.linux-dots/linux-dots-flow.jpg)
 
 # Installation
 I have followed the git bare method to manage my dotfiles explained in [this page](https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html).

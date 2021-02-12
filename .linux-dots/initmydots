@@ -1,0 +1,89 @@
+#!/bin/bash
+
+### Removing Bloats
+
+bloats=(
+    $(cat $HOME/.linux-dots/bloats.txt)
+)
+
+expkgs=($(
+    comm -23 \
+        <(pacman -Qqt | sort) \
+        <(echo base | tr ' ' '\n' | cat <(pacman -Sqg base-devel) - | sort -u)
+))
+
+detectedbloatpkgs=($(
+    comm -12 \
+        <(echo ${expkgs[@]} | tr ' ' '\n' | sort -u) \
+        <(echo ${bloats[@]} | tr ' ' '\n' | sort -u)
+))
+
+if [ ${#detectedbloatpkgs[@]} -eq 0 ]; then
+    echo "Your system is bloat free!!!"
+else
+    rmpkgs=$(
+        zenity --list --checklist \
+            --title "Remove bloat packages" \
+            --text "Select the bloat packages to remove" \
+            --column "" --column "Package" \
+            True $(echo ${detectedbloatpkgs[@]} | sed 's/ / True /g')
+    )
+    rmpkgs=${rmpkgs//|/ }
+
+    if [ ${#rmpkgs[@]} -eq 0 ]; then
+        echo "No packages are selected to remove."
+    else
+        sudo pacman -Rs $rmpkgs
+    fi
+fi
+
+### Installing My Packages
+mypkgs=(
+    $(cat $HOME/.linux-dots/mypkgs.txt)
+)
+
+if [ ${#mypkgs[@]} -eq 0 ]; then
+    echo "You do not have any favourite packages"
+else
+    installmypkgs=$(
+        zenity --list --checklist \
+            --title "Install packages" \
+            --text "Select the packages to install" \
+            --column "" --column "Package" \
+            True $(echo ${mypkgs[@]} | sed 's/ / True /g')
+    )
+    installmypkgs=${installmypkgs//|/ }
+
+    # Install the selected packages, or just upgrade system
+    paru -Syu --needed ${installmypkgs[@]}
+fi
+
+### Removing Orphan packages
+if [[ $(pacman -Qtdq) ]]; then
+    sudo pacman -Rns $(pacman -Qtdq)
+else
+    echo "Your system has no orphaned packages"
+fi
+
+### Adding Dotfile management functionality
+# Backup Directory for existing files (That will be overwritten)
+mkdir -p $HOME/rcbackup
+[ -d $HOME/.linux-dots ] && mv $HOME/.linux-dots $HOME/rcbackup
+mkdir -p $HOME/.linux-dots/.git
+/usr/bin/git clone https://github.com/rahatzamancse/linux-dots.git --bare $HOME/.linux-dots/.git
+dotfiles="/usr/bin/git --git-dir=$HOME/.linux-dots/.git --work-tree=$HOME"
+$dotfiles config --local status.showUntrackedFiles no
+
+# Moving existing important rc files to a safe place
+affectedfiles=$($dotfiles ls-files -dm -- ~ | sort -u)
+echo $affectedfiles
+cp -v $affectedfiles -t $HOME/rcbackup/
+[ -f $HOME/.zshrc ] && mv $HOME/.zshrc $HOME/rcbackup/
+$dotfiles checkout -f
+
+### Adding wallpapers
+walldir=$(zenity --file-selection --title="Choose a directory for your wallpapers" --directory)
+echo "Downloading wallpapers: ${walldir}"
+
+
+echo "Now please reboot your machine"
