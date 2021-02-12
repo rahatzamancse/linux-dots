@@ -1,7 +1,7 @@
 # Maintainer: Rahat Zaman <rahatzamancse@gmail.com>
 _dist="gnome"
 pkgname=linux-dots-${_dist}-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.01
+pkgver=r29.d39d3a2
 pkgrel=1
 pkgdesc="All the dot files configured to use by Rahat Zaman."
 arch=('any')
@@ -151,7 +151,7 @@ check() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-${_dist}-git}/src/skel"
+	cd "$srcdir/${pkgname%-${_dist}-git}/etc/skel"
 	for file in $(find . -type f); do
 		install -m 644 -D ${file} "$pkgdir/etc/skel/${file}"
 	done
