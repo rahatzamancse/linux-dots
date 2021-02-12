@@ -16,6 +16,7 @@ flameshot
 folder-color-bzr
 font-manager
 gcolor3
+gdown
 geary
 git-nautilus-icons
 gitkraken

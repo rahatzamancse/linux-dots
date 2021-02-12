@@ -1,0 +1,15 @@
+figlet
+lolcat
+lsd
+paru
+zsh
+zsh-autosuggestions
+zsh-completions
+zsh-history-substring-search
+zsh-syntax-highlighting
+zsh-theme-powerlevel10k
+zsh-auto-notify
+zsh-you-should-use
+rofi
+neovim
+zenity
