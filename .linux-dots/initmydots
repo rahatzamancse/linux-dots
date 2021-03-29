@@ -3,12 +3,15 @@
 ### Installing script dependencies
 # base-devel to build from AUR
 sudo pacman -Sy --needed base-devel
-# Installing PARU
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-cd ..
-rm -rf paru
+# make sure AUR package manager paru is installed
+if ! pacman -Qs paru > /dev/null ; then
+	# Installing PARU
+	git clone https://aur.archlinux.org/paru.git
+	cd paru
+	makepkg -si
+	cd ..
+	rm -rf paru
+fi
 
 ### Adding Dotfile management functionality
 # Backup Directory for existing files (That will be overwritten)
@@ -93,6 +96,9 @@ if [[ $(pacman -Qtdq) ]]; then
 else
     echo "Your system has no orphaned packages"
 fi
+
+### Restoring dconf settings
+dconf load /com/gexperts/Tilix/ < $HOME/.linux-dots/dconf/com.gexperts.Tilix
 
 ### Adding wallpapers
 if zenity --question --text="Do you want to download wallpapers from Google Drive as zip?"; then

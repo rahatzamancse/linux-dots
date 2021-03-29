@@ -1,0 +1,20 @@
+[/]
+auto-hide-mouse=false
+control-click-titlebar=true
+control-scroll-zoom=true
+copy-on-select=true
+enable-wide-handle=false
+quake-specific-monitor=0
+sidebar-on-right=false
+terminal-title-show-when-single=false
+terminal-title-style='normal'
+use-tabs=true
+window-style='normal'
+
+[profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
+background-transparency-percent=0
+badge-text=''
+dim-transparency-percent=0
+font='JetBrains Mono 12'
+use-system-font=false
+visible-name='Default'

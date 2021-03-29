@@ -73,6 +73,7 @@ tesseract
 texlive-most
 texlive-lang
 torbrowser-launcher
+whitesur-gtk-theme-git
 biber
 tilix
 transmission-gtk
