@@ -63,21 +63,28 @@ bindkey '^[[Z' undo                                             # Shift+tab undo
 alias grubup="sudo update-grub"
 alias orphaned="sudo pacman -Rns $(pacman -Qtdq)"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
-alias cp="cp -i"                                                # Confirm before overwriting something
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -i'
+
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
 alias gitu='git add . && git commit && git push'
 alias please='sudo'
-alias gulu="echo 'Prapti'"
-alias prapti="echo 'Gulu'"
-alias putu="echo 'Rahat'"
-alias rahat="echo 'Putu'"
+alias gulu="figlet 'Prapti'"
+alias prapti="figlet 'Gulu'"
+alias putu="figlet 'Rahat'"
+alias rahat="figlet 'Putu'"
 alias fucking='sudo'
 alias ls=lsd
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.linux-dots/.git --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no
 alias rmpclock='sudo rm /var/lib/pacman/db.lck'
 alias diff=vimdiff
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+alias tb="nc termbin.com 9999"
 
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
@@ -131,8 +138,6 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 # (cat $HOME/.config/wpg/sequences &)
-
-export NEPTUNE_API_TOKEN="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vdWkubmVwdHVuZS5haSIsImFwaV91cmwiOiJodHRwczovL3VpLm5lcHR1bmUuYWkiLCJhcGlfa2V5IjoiNzQ5OTFlZDUtMDA4OC00ZjU5LWFkMmQtMzc1MjU4NDE2NTBmIn0="
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 	source /etc/profile.d/vte.sh

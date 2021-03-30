@@ -7,6 +7,7 @@ chrome-gnome-shell
 clipgrab
 conky
 crow-translate
+dash
 dconf-editor
 discord
 docker
@@ -52,6 +53,7 @@ nodejs
 noto-fonts-cjk
 noto-fonts-extra
 noto-fonts
+noto-fonts-emoji
 openbangla-keyboard-bin
 pace
 papirus-icon-theme
