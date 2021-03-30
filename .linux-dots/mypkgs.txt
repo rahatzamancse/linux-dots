@@ -13,6 +13,9 @@ discord
 docker
 evince
 file-roller
+fish
+fish-pisces
+starship
 flameshot
 folder-color-bzr
 font-manager
@@ -62,6 +65,7 @@ peek
 popsicle
 python-pip
 qalculate-gtk
+rust
 screenkey
 scrot
 simplescreenrecorder

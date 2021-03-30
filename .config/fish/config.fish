@@ -99,3 +99,4 @@ alias tb="nc termbin.com 9999"
 eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
+starship init fish | source
