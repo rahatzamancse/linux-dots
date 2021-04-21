@@ -38,6 +38,7 @@ gnome-shell-extension-coverflow-alt-tab
 gnome-shell-extension-emoji-selector-git
 gnome-shell-extension-no-annoyance-git
 gnome-shell-extension-system-monitor-git
+gnome-shell-extension-blur-my-shell-git
 gnome-sound-recorder
 gnome-tweaks
 gnome-weather
@@ -70,7 +71,6 @@ noto-fonts-extra
 openbangla-keyboard-bin
 p7zip
 pace
-pamac-flatpak-plugin
 papirus-icon-theme
 pavucontrol
 peek
@@ -100,10 +100,10 @@ uget-integrator-chrome
 unace
 unrar
 upwork
+variety
 virtualbox
 virtualbox-guest-iso
 visual-studio-code-bin
-whitesur-gtk-theme-git
 wps-office
 yaru-sound-theme
 zoom

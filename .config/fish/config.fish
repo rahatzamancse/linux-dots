@@ -93,10 +93,13 @@ alias rmpclock='sudo rm /var/lib/pacman/db.lck'
 alias diff=vimdiff
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 alias tb="nc termbin.com 9999"
+alias mirrorsup='sudo reflector --latest 200 --verbose --age 12 --download-timeout 60 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
+
+conda deactivate
 
 starship init fish | source
