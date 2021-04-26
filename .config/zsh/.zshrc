@@ -143,5 +143,7 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 	source /etc/profile.d/vte.sh
 fi
 
+[ -f $HOME/.config/API_TOKENS ] && source $HOME/.config/API_TOKENS
+
 figlet 'G U L U' | lolcat
 

@@ -95,11 +95,15 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 alias tb="nc termbin.com 9999"
 alias mirrorsup='sudo reflector --latest 200 --verbose --age 12 --download-timeout 60 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 
+### API Tokens
+
+[ -f $HOME/.config/API_TOKENS ] && source $HOME/.config/API_TOKENS
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
 conda deactivate
-
 starship init fish | source
+
