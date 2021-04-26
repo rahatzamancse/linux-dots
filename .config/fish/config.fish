@@ -67,7 +67,7 @@ end
 
 
 ### ALIASES ###
-alias clear="clear; figlet 'G U L U' | lolcat"
+alias clear="/bin/clear; figlet 'G U L U' | lolcat"
 alias grubup="sudo update-grub"
 alias orphaned="sudo pacman -Rns (pacman -Qtdq)"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
@@ -96,7 +96,6 @@ alias tb="nc termbin.com 9999"
 alias mirrorsup='sudo reflector --latest 200 --verbose --age 12 --download-timeout 60 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 
 ### API Tokens
-
 [ -f $HOME/.config/API_TOKENS ] && source $HOME/.config/API_TOKENS
 
 # >>> conda initialize >>>
@@ -106,4 +105,4 @@ eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 
 conda deactivate
 starship init fish | source
-
+clear

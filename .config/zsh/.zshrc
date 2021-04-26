@@ -60,6 +60,7 @@ bindkey '^[[Z' undo                                             # Shift+tab undo
 
 ## Alias section
 # Add useful aliases
+alias clear="/bin/clear; figlet 'G U L U' | lolcat"
 alias grubup="sudo update-grub"
 alias orphaned="sudo pacman -Rns $(pacman -Qtdq)"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
@@ -85,6 +86,7 @@ alias rmpclock='sudo rm /var/lib/pacman/db.lck'
 alias diff=vimdiff
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 alias tb="nc termbin.com 9999"
+alias mirrorsup='sudo reflector --latest 200 --verbose --age 12 --download-timeout 60 --protocol http     --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
@@ -132,6 +134,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+conda deactivate
+
 # powerlevel10k section
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
@@ -145,5 +149,4 @@ fi
 
 [ -f $HOME/.config/API_TOKENS ] && source $HOME/.config/API_TOKENS
 
-figlet 'G U L U' | lolcat
-
+clear
