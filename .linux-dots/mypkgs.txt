@@ -7,7 +7,6 @@ capitaine-cursors
 celluloid
 chrome-gnome-shell
 clipgrab
-conky
 crow-translate
 dash
 dconf-editor
@@ -36,7 +35,6 @@ gnome-online-accounts
 gnome-shell-extension-clipboard-indicator
 gnome-shell-extension-coverflow-alt-tab
 gnome-shell-extension-emoji-selector-git
-gnome-shell-extension-no-annoyance-git
 gnome-shell-extension-system-monitor-git
 gnome-shell-extension-blur-my-shell-git
 gnome-sound-recorder
@@ -73,14 +71,10 @@ p7zip
 pace
 papirus-icon-theme
 pavucontrol
-peek
 popsicle
 python-pip
 qalculate-gtk
 rust
-screenkey
-scrot
-simplescreenrecorder
 skypeforlinux-stable-bin
 starship
 sushi
@@ -95,8 +89,6 @@ tilix
 torbrowser-launcher
 transmission-gtk
 ttf-jetbrains-mono
-uget
-uget-integrator-chrome
 unace
 unrar
 upwork

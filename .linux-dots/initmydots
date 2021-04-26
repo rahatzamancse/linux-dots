@@ -99,6 +99,7 @@ fi
 
 ### Restoring dconf settings
 dconf load /com/gexperts/Tilix/ < $HOME/.linux-dots/dconf/com.gexperts.Tilix
+dconf load / < $HOME/.linux-dots/dconf/custom-shortcuts.conf
 
 ### Adding wallpapers
 if zenity --question --text="Do you want to download wallpapers from Google Drive as zip?"; then
