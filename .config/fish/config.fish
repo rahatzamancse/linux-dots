@@ -70,6 +70,28 @@ function backupkeys
     dconf dump / | sed -n '/\[org.gnome.settings-daemon.plugins.media-keys/,/^$/p' > ~/.linux-dots/dconf/custom-shortcuts.conf
 end
 
+# Ask user for confirmation
+function read_confirm
+  while true
+    read -l -P "$argv[1] [y/N] " confirm
+
+    switch $confirm
+      case Y y
+        return 0
+      case '' N n
+        return 1
+    end
+  end
+end
+
+
+# Diff pacnews with meld
+function pacnewsdiff
+    sudo meld $argv[1] $argv[1].pacnew
+    if read_confirm 'Do you want to delete the pacnew?'
+        sudo rm $argv[1].pacnew
+    end
+end
 
 ### ALIASES ###
 alias clear="/bin/clear; figlet 'G U L U' | lolcat"
@@ -99,6 +121,7 @@ alias diff=vimdiff
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 alias tb="nc termbin.com 9999"
 alias mirrorsup='sudo reflector --latest 200 --verbose --age 12 --download-timeout 60 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias pacnews='find /etc -regextype posix-extended -regex ".+\.pac(new|save)" 2> /dev/null'
 
 ### API Tokens
 [ -f $HOME/.config/API_TOKENS ] && source $HOME/.config/API_TOKENS
