@@ -30,9 +30,6 @@ affectedfiles=$($dotfiles ls-files -dm -- ~ | sort -u)
 # Home configs go brrrr...
 $dotfiles checkout -f
 
-# Installing other deps
-cat $HOME/.linux-dots/deps.txt | paru -S --needed -
-
 ### Removing Bloats
 bloats=(
     $(cat $HOME/.linux-dots/bloats.txt)
@@ -73,6 +70,7 @@ fi
 mypkgs=(
     $(cat $HOME/.linux-dots/mypkgs.txt)
 )
+paru -S --needed zenity
 
 if [ ${#mypkgs[@]} -eq 0 ]; then
     echo "You do not have any favourite packages"

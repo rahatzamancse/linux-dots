@@ -36,4 +36,40 @@ export LESSHISTFILE=$HOME/.cache/lesshst
 export BROWSER=/usr/bin/google-chrome-stable
 export EXPLORER=/usr/bin/nautilus
 
-export STARSHIP_CONFIG="$HOME/.starship/config.toml"
+export STARSHIP_CONFIG="$HOME/.config/starship.toml"
+
+
+### ALIASES ###
+alias clear="/bin/clear; figlet 'G U L U' | lolcat"
+alias grubup="sudo update-grub"
+alias orphaned="sudo pacman -Rns (pacman -Qtdq)"
+alias fixpacman="sudo rm /var/lib/pacman/db.lck"
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -i'
+
+alias df='df -h'                                                # Human-readable sizes
+alias free='free -m'                                            # Show sizes in MB
+alias gitu='git add . && git commit && git push'
+alias please='sudo'
+alias gulu="figlet 'Prapti'"
+alias prapti="figlet 'Gulu'"
+alias putu="figlet 'Rahat'"
+alias rahat="figlet 'Putu'"
+alias fucking='sudo'
+alias ls=lsd
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.linux-dots/.git --work-tree=$HOME'
+dotfiles config --local status.showUntrackedFiles no
+alias rmpclock='sudo rm /var/lib/pacman/db.lck'
+alias diff=vimdiff
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+alias tb="nc termbin.com 9999"
+alias mirrorsup='sudo reflector --latest 200 --verbose --age 12 --download-timeout 60 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias pacnews='find /etc -regextype posix-extended -regex ".+\.pac(new|save)" 2> /dev/null'
+
+
+### API Tokens
+[ -f $HOME/.config/API_TOKENS ] && source $HOME/.config/API_TOKENS
+

@@ -1,14 +1,18 @@
+# 
+#    _       ____                   
+#   / |_ __ / ___|  __ _ _ __   ___ 
+#   | | '_ \\___ \ / _` | '_ \ / _ \
+#   | | | | |___) | (_| | | | |  __/
+#   |_|_| |_|____/ \__,_|_| |_|\___|
+#                                 
+
+source ~/.profile
+
 # File locations
-ZDOTDIR=$HOME/.config/zsh
 HISTFILE=$HOME/.cache/zhistory
 HISTSIZE=500
 HISTFILESIZE=100000
 SAVEHIST=100
-
-# Set $PATH if ~/.local/bin exist
-if [ -d "$HOME/.local/bin" ]; then
-    export PATH=$HOME/.local/bin:$PATH
-fi
 
 ## Options section
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
@@ -58,35 +62,7 @@ bindkey '^[[1;5C' forward-word                                  #
 bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
 bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
-## Alias section
-# Add useful aliases
-alias clear="/bin/clear; figlet 'G U L U' | lolcat"
-alias grubup="sudo update-grub"
-alias orphaned="sudo pacman -Rns $(pacman -Qtdq)"
-alias fixpacman="sudo rm /var/lib/pacman/db.lck"
-
-# confirm before overwriting something
-alias cp="cp -i"
-alias mv='mv -i'
-alias rm='rm -i'
-
-alias df='df -h'                                                # Human-readable sizes
-alias free='free -m'                                            # Show sizes in MB
-alias gitu='git add . && git commit && git push'
-alias please='sudo'
-alias gulu="figlet 'Prapti'"
-alias prapti="figlet 'Gulu'"
-alias putu="figlet 'Rahat'"
-alias rahat="figlet 'Putu'"
-alias fucking='sudo'
-alias ls=lsd
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.linux-dots/.git --work-tree=$HOME'
-dotfiles config --local status.showUntrackedFiles no
-alias rmpclock='sudo rm /var/lib/pacman/db.lck'
-alias diff=vimdiff
-alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-alias tb="nc termbin.com 9999"
-alias mirrorsup='sudo reflector --latest 200 --verbose --age 12 --download-timeout 60 --protocol http     --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+source ~/.config/alias.sh
 
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
@@ -136,17 +112,4 @@ unset __conda_setup
 
 conda deactivate
 
-# powerlevel10k section
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-# (cat $HOME/.config/wpg/sequences &)
-
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-	source /etc/profile.d/vte.sh
-fi
-
-[ -f $HOME/.config/API_TOKENS ] && source $HOME/.config/API_TOKENS
-
-clear
+figlet 'G U L U' | lolcat
