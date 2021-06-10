@@ -133,4 +133,4 @@ eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 
 conda deactivate
 starship init fish | source
-clear
+figlet 'G U L U' | lolcat

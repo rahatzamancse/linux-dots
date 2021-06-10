@@ -35,3 +35,5 @@ export LESSHISTFILE=$HOME/.cache/lesshst
 # My defaults
 export BROWSER=/usr/bin/google-chrome-stable
 export EXPLORER=/usr/bin/nautilus
+
+export STARSHIP_CONFIG="$HOME/.starship/config.toml"

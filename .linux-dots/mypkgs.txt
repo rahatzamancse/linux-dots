@@ -37,6 +37,8 @@ gnome-shell-extension-coverflow-alt-tab
 gnome-shell-extension-emoji-selector-git
 gnome-shell-extension-system-monitor-git
 gnome-shell-extension-blur-my-shell-git
+gnome-shell-extension-gnome-ui-tune-git
+gnome-shell-extension-weather-in-the-clock-git
 gnome-sound-recorder
 gnome-tweaks
 gnome-weather
@@ -52,6 +54,7 @@ hugo
 ibus-mozc
 jdk-openjdk
 jre-openjdk
+kooha
 libappindicator-gtk3
 lrzip
 matcha-gtk-theme
@@ -62,6 +65,7 @@ nautilus-copy-path
 neofetch
 nethogs
 nodejs
+npm
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
