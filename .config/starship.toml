@@ -1,0 +1,20 @@
+# ~/.config/starship.toml
+
+## FIRST LINE/ROW: Info & Status
+[directory]
+truncation_symbol = " "
+
+# Last param in the first line/row
+[cmd_duration]
+min_time = 500
+format = "[ $duration]($style)"
+
+
+## SECOND LINE/ROW: Prompt
+[shell]
+fish_indicator = ""
+powershell_indicator = "_"
+bash_indicator = '\(bash\)'
+zsh_indicator = '\(zsh\)'
+unknown_indicator = '\(mystery shell\)'
+disabled = false
