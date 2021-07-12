@@ -10,6 +10,9 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # I like a bigger cursor
 export XCURSOR_SIZE=64
 
+# JAVA_HOME to jdk
+export JAVA_HOME="/usr/lib/jvm/default"
+
 # XDG variables, see https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share/"

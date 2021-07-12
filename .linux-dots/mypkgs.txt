@@ -1,10 +1,8 @@
 aria2
 baobab
 biber
-bitwarden
 bleachbit
 capitaine-cursors
-celluloid
 chrome-gnome-shell
 clipgrab
 crow-translate
@@ -62,6 +60,7 @@ lsd
 lrzip
 matcha-gtk-theme
 meld
+mpv
 nautilus-admin
 nautilus-compare
 nautilus-copy-path
@@ -82,12 +81,15 @@ papirus-icon-theme
 pavucontrol
 popsicle
 python-pip
+python-guessit
+python-imdbpy
 qalculate-gtk
 rofi
 rust
 skypeforlinux-stable-bin
 starship
 sushi
+subliminal-git
 telegram-desktop
 tesseract
 tesseract-data-ben
