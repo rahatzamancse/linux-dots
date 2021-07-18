@@ -33,7 +33,6 @@ gnome-disk-utility
 gnome-online-accounts
 gnome-shell-extension-clipboard-indicator
 gnome-shell-extension-coverflow-alt-tab
-gnome-shell-extension-emoji-selector-git
 gnome-shell-extension-system-monitor-git
 gnome-shell-extension-blur-my-shell-git
 gnome-shell-extension-gnome-ui-tune-git
