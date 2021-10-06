@@ -99,6 +99,10 @@ fi
 dconf load /com/gexperts/Tilix/ < $HOME/.linux-dots/dconf/com.gexperts.Tilix
 dconf load / < $HOME/.linux-dots/dconf/custom-shortcuts.conf
 
+### Adding "Open VSCode Here context manu on Nautilus
+bash -c "$(wget -qO- https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/install.sh)"
+nautilus -q
+
 ### Adding wallpapers
 if zenity --question --text="Do you want to download wallpapers from Google Drive as zip?"; then
     wallzipid=$(zenity --entry --text "Please Enter the wallpaper zip google drive file ID")
