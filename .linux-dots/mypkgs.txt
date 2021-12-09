@@ -18,6 +18,7 @@ font-manager
 gcolor3
 git-nautilus-icons
 gitkraken
+gnome-text-editor
 gnome-calendar
 gnome-clocks
 gnome-contacts
@@ -72,6 +73,7 @@ papirus-icon-theme
 pavucontrol
 popsicle
 python-pip
+python-poetry
 python-guessit
 python-imdbpy
 qalculate-gtk
