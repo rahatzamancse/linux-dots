@@ -14,11 +14,11 @@ fish
 fish-pisces
 flameshot
 folder-color-bzr
-font-manager
 gcolor3
 git-nautilus-icons
 gitkraken
 gnome-text-editor
+gedit
 gnome-calendar
 gnome-clocks
 gnome-contacts
@@ -42,7 +42,6 @@ handbrake
 hardinfo
 htop
 hugo
-ibus-mozc
 jdk-openjdk
 jre-openjdk
 kooha

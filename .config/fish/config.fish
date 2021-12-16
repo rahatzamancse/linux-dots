@@ -86,6 +86,11 @@ function read_confirm
   end
 end
 
+function pyclean
+    find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
+end
+
+
 
 # Diff pacnews with meld
 function pacnewsdiff
@@ -95,11 +100,5 @@ function pacnewsdiff
     end
 end
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
-
-conda deactivate
 starship init fish | source
 figlet 'G U L U' | lolcat

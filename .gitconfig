@@ -1,0 +1,9 @@
+[user]
+	email = rahatzamancse@gmail.com
+	name = Rahat Zaman
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"

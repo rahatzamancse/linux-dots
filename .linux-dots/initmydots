@@ -103,15 +103,4 @@ dconf load / < $HOME/.linux-dots/dconf/custom-shortcuts.conf
 bash -c "$(wget -qO- https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/install.sh)"
 nautilus -q
 
-### Adding wallpapers
-if zenity --question --text="Do you want to download wallpapers from Google Drive as zip?"; then
-    wallzipid=$(zenity --entry --text "Please Enter the wallpaper zip google drive file ID")
-    walldir=$(zenity --file-selection --title="Choose a directory for your wallpapers" --directory)
-    echo "Downloading wallpapers: ${walldir}"
-    gdown "https://drive.google.com/uc?id=$wallzipid" 
-else
-    echo "Not Downloading wallpapers"
-fi
-
-
 echo "Now please reboot your machine"
