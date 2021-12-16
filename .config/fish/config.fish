@@ -100,5 +100,10 @@ function pacnewsdiff
     end
 end
 
+# rsync of laptop and desktop
+function laptopsync
+    rsync -zaPv --delete $argv[2] $argv[3] ~/Desktop/sync/ insane@$argv[1]:~/Desktop/sync/
+end
+
 starship init fish | source
 figlet 'G U L U' | lolcat
