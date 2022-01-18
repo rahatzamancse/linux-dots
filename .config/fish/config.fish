@@ -106,4 +106,7 @@ function laptopsync
 end
 
 starship init fish | source
-figlet 'G U L U' | lolcat
+
+if status --is-login
+	figlet 'G U L U' | lolcat
+end
