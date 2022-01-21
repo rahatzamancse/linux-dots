@@ -27,11 +27,11 @@ gnome-disk-utility
 gnome-online-accounts
 gnome-shell-extension-clipboard-indicator
 gnome-shell-extension-coverflow-alt-tab
-gnome-shell-extension-system-monitor-git
-gnome-shell-extension-blur-my-shell-git
+gnome-shell-extension-blur-my-shell
 gnome-shell-extension-gnome-ui-tune-git
 gnome-shell-extension-burn-my-windows
 gnome-shell-extension-weather-in-the-clock-git
+gnome-shell-extension-vitals-git
 gnome-sound-recorder
 gnome-tweaks
 gnome-weather
