@@ -72,6 +72,9 @@ alias tb="nc termbin.com 9999"
 alias mirrorsup='sudo reflector --latest 200 --verbose --age 12 --download-timeout 60 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias pacnews='find /etc -regextype posix-extended -regex ".+\.pac(new|save)" 2> /dev/null'
 
+alias gitignorerm='git ls-files -i -c --exclude-from=.gitignore | xargs git rm --cached'
+
+
 
 ### API Tokens
 [ -f $HOME/.config/API_TOKENS ] && source $HOME/.config/API_TOKENS
