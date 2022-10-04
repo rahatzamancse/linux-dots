@@ -110,3 +110,9 @@ starship init fish | source
 if status --is-login
 	figlet 'G U L U' | lolcat
 end
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
