@@ -1,3 +1,4 @@
+bat
 baobab
 babelfish
 biber
@@ -6,9 +7,11 @@ capitaine-cursors
 chrome-gnome-shell
 dconf-editor
 discord
+dust
 docker
 evince
 ffmpegthumbnailer
+fzf
 file-roller
 figlet
 fish
@@ -72,6 +75,7 @@ nerd-fonts-complete
 nautilus-open-any-terminal
 openbangla-keyboard-bin
 p7zip
+procs
 pace
 papirus-icon-theme
 pavucontrol
@@ -87,6 +91,8 @@ rsync
 starship
 sushi
 telegram-desktop
+tokei
+tealdeer
 texlive-lang
 texlive-most
 tilix
@@ -105,3 +111,4 @@ zsh-completions
 zsh-history-substring-search
 zsh-syntax-highlighting
 zsh-you-should-use
+zoxide

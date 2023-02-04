@@ -44,9 +44,13 @@ export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 
 ### ALIASES ###
 alias clear="/bin/clear; figlet 'G U L U' | lolcat"
+alias cat="bat"
+alias du="dust"
 alias grubup="sudo update-grub"
 alias orphaned="sudo pacman -Rns (pacman -Qtdq)"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
+
+# alias cd="z" # This is on test
 
 # confirm before overwriting something
 alias cp="cp -i"
