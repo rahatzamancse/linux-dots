@@ -1,0 +1,9 @@
+cameractrls
+digikam
+flatseal
+citra
+lutris
+paraview
+yuzu
+protonup-qt
+microsoft edge
