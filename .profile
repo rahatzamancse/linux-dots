@@ -26,6 +26,9 @@ export ZDOTDIR=$HOME/.config/zsh
 # export XAUTHORITY=$HOME/.config/Xauthority
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
+# Add path
+# export PATH=$PATH:/home/insane/.local/share/gem/ruby/3.0.0/bin
+
 # DATA:
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export GOPATH="$XDG_DATA_HOME"/go

@@ -27,6 +27,9 @@ affectedfiles=$($dotfiles ls-files -dm -- ~ | sort -u)
 [[ ! -z "$affectedfiles" ]] && cp -v $affectedfiles -t $HOME/rcbackup/
 [ -f $HOME/.zshrc ] && mv $HOME/.zshrc $HOME/rcbackup/
 
+# Installing zenity
+paru -S --needed zenity
+
 # Home configs go brrrr...
 $dotfiles checkout -f
 
@@ -70,7 +73,6 @@ fi
 mypkgs=(
     $(cat $HOME/.linux-dots/mypkgs.txt)
 )
-paru -S --needed zenity
 
 if [ ${#mypkgs[@]} -eq 0 ]; then
     echo "You do not have any favourite packages"
@@ -98,9 +100,5 @@ fi
 ### Restoring dconf settings
 dconf load /com/gexperts/Tilix/ < $HOME/.linux-dots/dconf/com.gexperts.Tilix
 dconf load / < $HOME/.linux-dots/dconf/custom-shortcuts.conf
-
-### Adding "Open VSCode Here context manu on Nautilus
-bash -c "$(wget -qO- https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/install.sh)"
-nautilus -q
 
 echo "Now please reboot your machine"
