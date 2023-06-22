@@ -6,10 +6,13 @@ bleachbit
 capitaine-cursors
 chrome-gnome-shell
 dconf-editor
+ruby-youplot
+csvkit
 discord
 dust
 docker
 evince
+euporie
 ffmpegthumbnailer
 fzf
 file-roller
@@ -46,6 +49,7 @@ htop
 hugo
 jdk-openjdk
 jre-openjdk
+jqp
 kooha
 lazydocker
 libappindicator-gtk3
