@@ -6,13 +6,11 @@ bleachbit
 capitaine-cursors
 chrome-gnome-shell
 dconf-editor
-ruby-youplot
-csvkit
 discord
 dust
 docker
+docker-buildx
 evince
-euporie
 ffmpegthumbnailer
 fzf
 file-roller
@@ -49,7 +47,6 @@ htop
 hugo
 jdk-openjdk
 jre-openjdk
-jqp
 kooha
 lazydocker
 libappindicator-gtk3
@@ -110,3 +107,7 @@ zsh-history-substring-search
 zsh-syntax-highlighting
 zsh-you-should-use
 zoxide
+ruby-youplot
+csvkit
+euporie
+jqp

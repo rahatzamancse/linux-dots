@@ -46,65 +46,6 @@ else
   bind '$' __history_previous_command_arguments
 end
 
-# Function for creating a backup file
-# ex: backup file.txt
-# result: copies file as file.txt.bak
-function backup --argument filename
-    cp $filename $filename.bak
-end
-
-# Function for copying files and directories, even recursively.
-# ex: copy DIRNAME LOCATIONS
-# result: copies the directory and all of its contents.
-function copy
-    set count (count $argv | tr -d \n)
-    if test "$count" = 2; and test -d "$argv[1]"
-	set from (echo $argv[1] | trim-right /)
-	set to (echo $argv[2])
-        command cp -r $from $to
-    else
-        command cp $argv
-    end
-end
-
-# Backup Gnome Keybindings
-function backupkeys
-    dconf dump / | sed -n '/\[org.gnome.settings-daemon.plugins.media-keys/,/^$/p' > ~/.linux-dots/dconf/custom-shortcuts.conf
-end
-
-# Ask user for confirmation
-function read_confirm
-  while true
-    read -l -P "$argv[1] [y/N] " confirm
-
-    switch $confirm
-      case Y y
-        return 0
-      case '' N n
-        return 1
-    end
-  end
-end
-
-function pyclean
-    find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
-end
-
-
-
-# Diff pacnews with meld
-function pacnewsdiff
-    sudo meld $argv[1] $argv[1].pacnew
-    if read_confirm 'Do you want to delete the pacnew?'
-        sudo rm $argv[1].pacnew
-    end
-end
-
-# rsync of laptop and desktop
-function laptopsync
-    rsync -zaPv --delete $argv[2] $argv[3] ~/Desktop/sync/ insane@$argv[1]:~/Desktop/sync/
-end
-
 starship init fish | source
 
 if status --is-login
@@ -112,9 +53,4 @@ if status --is-login
 end
 
 zoxide init --cmd cd fish | source
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
 

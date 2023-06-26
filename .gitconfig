@@ -14,3 +14,7 @@
     prompt = false
 [difftool "meld"]
     cmd = meld "$LOCAL" "$REMOTE"
+[https]
+	postBuffer = 2097152000
+[http]
+	postBuffer = 2097152000
