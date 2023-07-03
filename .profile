@@ -81,6 +81,11 @@ alias pacnews='find /etc -regextype posix-extended -regex ".+\.pac(new|save)" 2>
 
 alias gitignorerm='git ls-files -i -c --exclude-from=.gitignore | xargs git rm --cached'
 
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+
+
+alias docker_clean_all='docker kill $(docker ps -q) && docker_clean_ps && docker rmi $(docker images -a -q)'
 
 
 ### API Tokens
