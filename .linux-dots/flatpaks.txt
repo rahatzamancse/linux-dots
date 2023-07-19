@@ -7,3 +7,4 @@ paraview
 yuzu
 protonup-qt
 microsoft edge
+mission center
