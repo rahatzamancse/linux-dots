@@ -12,6 +12,7 @@ docker
 docker-buildx
 evince
 ffmpegthumbnailer
+fd
 fzf
 file-roller
 figlet
@@ -79,8 +80,10 @@ python-pip
 python-poetry
 python-guessit
 python-imdbpy
+python-neovim-git
 qalculate-gtk
 rofi
+ripgrep
 rust
 rsync
 starship
@@ -89,6 +92,8 @@ telegram-desktop
 tokei
 tealdeer
 texlive-lang
+xclip
+xsel
 texlive-most
 tilix
 transmission-gtk
