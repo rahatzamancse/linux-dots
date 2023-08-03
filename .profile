@@ -65,6 +65,7 @@ alias free='free -m'                                            # Show sizes in 
 alias gitu='git add . && git commit && git push'
 alias gitcr='git clone --recursive'
 alias gitc='git clone'
+alias git_myrepos='curl -s https://api.github.com/users/rahatzamancse/repos | jq -r ".[].name"'
 alias please='sudo'
 alias gulu="figlet 'Prapti'"
 alias prapti="figlet 'Gulu'"

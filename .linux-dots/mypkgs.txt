@@ -12,6 +12,7 @@ docker
 docker-buildx
 evince
 ffmpegthumbnailer
+fstrcmp
 fd
 fzf
 file-roller
