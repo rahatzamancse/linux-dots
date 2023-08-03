@@ -63,6 +63,8 @@ alias rm='rm -i'
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
 alias gitu='git add . && git commit && git push'
+alias gitcr='git clone --recursive'
+alias gitc='git clone'
 alias please='sudo'
 alias gulu="figlet 'Prapti'"
 alias prapti="figlet 'Gulu'"
@@ -86,6 +88,13 @@ alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=sta
 
 
 alias docker_clean_all='docker kill $(docker ps -q) && docker_clean_ps && docker rmi $(docker images -a -q)'
+
+# pass management
+alias passlist=rbw list
+alias passsearch="rbw list | grep -i"
+alias passget="rbw get"
+alias passadd="rbw add"
+alias passgetc="rbw get --clipboard"
 
 
 ### API Tokens
