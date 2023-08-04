@@ -91,7 +91,7 @@ alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=sta
 alias docker_clean_all='docker kill $(docker ps -q) && docker_clean_ps && docker rmi $(docker images -a -q)'
 
 # pass management
-alias passlist=rbw list
+alias passlist="rbw list"
 alias passsearch="rbw list | grep -i"
 alias passadd="rbw add"
 
