@@ -17,6 +17,10 @@ function passget --description 'get password from bitwarden with fuzzy matching'
 			return
 		end
 		rbw get $matched[$ind]
+
+	else if test (count $matched) -le 0
+		echo "No entry found"
+		return
 	else
 		rbw get $matched[1]
 	end
