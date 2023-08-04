@@ -12,7 +12,7 @@ function passget --description 'get password from bitwarden with fuzzy matching'
 		echo ''
 		read -l -P "Which one?: " ind
 		echo ''
-		if not math $ind ; or test $ind -le 0 ; or test $ind -gt (count $matched)
+		if string match -q -r '\D' $ind ; or test $ind -le 0 ; or test $ind -gt (count $matched)
 			echo "Invalid input"
 			return
 		end
