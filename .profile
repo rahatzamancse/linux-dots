@@ -93,10 +93,7 @@ alias docker_clean_all='docker kill $(docker ps -q) && docker_clean_ps && docker
 # pass management
 alias passlist=rbw list
 alias passsearch="rbw list | grep -i"
-alias passget="rbw get"
 alias passadd="rbw add"
-alias passgetc="rbw get --clipboard"
-
 
 ### API Tokens
 [ -f $HOME/.config/API_TOKENS ] && source $HOME/.config/API_TOKENS
