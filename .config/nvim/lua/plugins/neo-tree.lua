@@ -10,6 +10,9 @@ return {
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     },
+    cond = function()
+        return not vim.g.vscode
+    end,
     opts = {
         filesystem = {
             follow_current_file = true,

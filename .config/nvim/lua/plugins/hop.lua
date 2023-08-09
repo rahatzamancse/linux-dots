@@ -24,6 +24,9 @@ return {
             desc = 'Hop to word before cursor'
         },
     },
+    cond = function()
+        return not vim.g.vscode
+    end,
     config = function()
         require("hop").setup()
     end

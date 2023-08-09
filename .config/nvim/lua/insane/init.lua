@@ -1,3 +1,7 @@
 require("insane.set")
 
-vim.cmd[[colorscheme tokyonight]]
+if vim.g.vscode then
+	-- vscode specific
+else
+	vim.cmd[[colorscheme tokyonight]]
+end

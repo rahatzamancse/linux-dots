@@ -1,5 +1,8 @@
 return {
     'chentoast/marks.nvim',
+    cond = function()
+        return not vim.g.vscode
+    end,
     config = function()
         require'marks'.setup {
             -- whether to map keybinds or not. default true

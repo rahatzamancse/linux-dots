@@ -11,6 +11,9 @@ return {
         -- Additional lua configuration, makes nvim stuff amazing
         'folke/neodev.nvim'
     },
+    cond = function()
+        return not vim.g.vscode
+    end,
     config = function ()
         local lspconfig = require('lspconfig')
         local configs = require('lspconfig/configs')
