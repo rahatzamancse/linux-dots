@@ -78,7 +78,7 @@ papirus-icon-theme
 pavucontrol
 popsicle
 python-pip
-python-poetry
+pyenv
 python-guessit
 python-imdbpy
 python-neovim-git

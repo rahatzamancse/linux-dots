@@ -54,3 +54,4 @@ end
 
 zoxide init --cmd cd fish | source
 
+pyenv init - | source
