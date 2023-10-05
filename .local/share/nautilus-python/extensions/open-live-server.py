@@ -118,13 +118,15 @@ class OpenLiveServerExtension(GObject.GObject, Nautilus.MenuProvider):
             cnt = 0
             for f in os.listdir(folder):
                 if f.endswith('.html') or f.endswith('.htm'):
+                    print(f'Found {f}')
                     file = f
                     cnt += 1
                 if cnt > 1:
                     file = None
                     break
+        print(file)
         if file:
-            subprocess.run(f"xdg-open http://localhost:{new_port}/{f}", shell=True)
+            subprocess.run(f"xdg-open http://localhost:{new_port}/{file}", shell=True)
         else:
             subprocess.run(f"xdg-open http://localhost:{new_port}", shell=True)
 
