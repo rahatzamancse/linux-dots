@@ -1,10 +1,7 @@
 cameractrls
 digikam
+discord
 flatseal
-citra
-lutris
-paraview
-yuzu
-protonup-qt
-microsoft edge
+gitkraken
 mission center
+telegram
