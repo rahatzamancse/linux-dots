@@ -20,7 +20,6 @@ fish-pisces
 flameshot
 fstrcmp
 fzf
-gcolor3
 git-nautilus-icons
 gnome-calendar
 gnome-clocks
