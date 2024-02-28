@@ -1,6 +1,5 @@
 baobab
 bat
-biber
 bleachbit
 bitwarden-cli
 csvkit
@@ -27,6 +26,9 @@ gnome-contacts
 gnome-disk-utility
 gnome-online-accounts
 gnome-shell-extension-blur-my-shell
+gnome-shell-extension-appindicator
+gnome-shell-extension-just-perfection-desktop
+gnome-shell-extension-pano
 gnome-shell-extension-burn-my-windows
 gnome-shell-extension-gnome-ui-tune-git
 gnome-shell-extension-vitals-git

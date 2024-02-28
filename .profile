@@ -1,5 +1,7 @@
 # $HOME/.profile
 
+export PATH="$PATH:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 export QT_QPA_PLATFORMTHEME="qt5ct"
