@@ -102,7 +102,7 @@ visual-studio-code-bin
 wps-office
 wget
 xclip
-xsel
+xsel # required for neovim clipboard
 yaru-sound-theme
 zoom
 zenity
