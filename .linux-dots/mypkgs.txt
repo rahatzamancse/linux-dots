@@ -15,7 +15,6 @@ ffmpegthumbnailer
 figlet
 file-roller
 fish
-fish-pisces
 flameshot
 fstrcmp
 fzf
