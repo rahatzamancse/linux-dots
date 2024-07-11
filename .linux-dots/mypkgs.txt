@@ -80,6 +80,7 @@ python-pip
 python-numpy
 qalculate-gtk
 ripgrep
+rofi-rbw
 rofi
 rsync
 ruby-youplot
