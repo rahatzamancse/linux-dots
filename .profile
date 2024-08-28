@@ -1,6 +1,6 @@
 # $HOME/.profile
 
-export PATH="$PATH:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+export PATH="$PATH:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:$HOME/.local/share/bin"
 
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
