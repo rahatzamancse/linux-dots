@@ -98,7 +98,6 @@ else
 fi
 
 ### Restoring dconf settings
-dconf load /com/gexperts/Tilix/ < $HOME/.linux-dots/dconf/com.gexperts.Tilix
 dconf load / < $HOME/.linux-dots/dconf/custom-shortcuts.conf
 
 echo "Now please reboot your machine"

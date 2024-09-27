@@ -7,7 +7,6 @@ exfat-utils
 f2fs-tools
 fatresize
 fscrypt
-gnome-screenshot
 gparted
 jfsutils
 manjaro-zsh-config

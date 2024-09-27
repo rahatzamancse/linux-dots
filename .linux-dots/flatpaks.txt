@@ -1,8 +1,5 @@
 cameractrls
-digikam
 discord
 flatseal
-gitkraken
-mission center
+warehouse
 telegram
-Contrast
