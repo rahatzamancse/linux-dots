@@ -40,6 +40,10 @@ gnome-weather
 google-chrome
 gstreamer-meta
 gthumb
+gvfs-dnssd
+gvfs-goa
+gvfs-google
+gvfs-onedrive
 hugo
 lazydocker
 libappindicator-gtk3
@@ -61,6 +65,7 @@ nethogs
 nodejs
 npm
 obsidian
+pace
 p7zip
 pnpm
 pyenv

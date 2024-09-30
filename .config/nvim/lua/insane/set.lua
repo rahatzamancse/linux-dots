@@ -10,7 +10,12 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
--- vim.opt.clipboard = "unnamedplus"
 
-vim.keymap.set({ 'v', 'n' }, 'y', '"+y', { silent = true } )
+vim.keymap.set({'n', 'v'}, 'y', function()
+    if vim.v.register == '"' then
+        return '"+y'
+    end
+
+    return 'y'
+end, {expr = true})
 
