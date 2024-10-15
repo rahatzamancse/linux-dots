@@ -66,6 +66,7 @@ nodejs
 npm
 obsidian
 pace
+pamac-all-git
 p7zip
 pnpm
 pyenv
