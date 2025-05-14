@@ -1,0 +1,7 @@
+foresight
+AppIndicator and KStatusNotifierItem Support
+Blur my Shell
+Just Perfection
+PaperWM
+Vitals
+Weather O'Clock
