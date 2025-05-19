@@ -1,0 +1,15 @@
+[Unit]
+Description=ComfyUI Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/insane/.StabilityMatrix/Packages/ComfyUI/venv/bin/python /home/insane/.StabilityMatrix/Packages/ComfyUI/main.py --listen 10.0.0.138 --port 8188 --preview-method auto
+WorkingDirectory=/home/insane/.StabilityMatrix/Packages/ComfyUI
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
+

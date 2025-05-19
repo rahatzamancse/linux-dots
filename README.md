@@ -26,3 +26,8 @@ The overall flow of how you login and how all the scripts are ran is shown in th
 
 # Installation
 I have followed the git bare method to manage my dotfiles explained in [this page](https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html).
+
+
+
+# OLLAMA start command for docker
+docker run -d --restart unless-stopped --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama

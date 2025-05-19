@@ -84,6 +84,7 @@ alias passlist="rbw list"
 alias passsearch="rbw list | grep -i"
 alias passadd="rbw add"
 
+set CMAKE_COLOR_DIAGNOSTICS ON
+
 ### API Tokens
 [ -f $HOME/.config/API_TOKENS ] && source $HOME/.config/API_TOKENS
-
