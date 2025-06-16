@@ -6,7 +6,7 @@
 #   |_|_| |_|____/ \__,_|_| |_|\___|
 #                                 
 
-source ~/.profile
+[ -f "$HOME/.config/env.d/common_env.sh" ] && source "$HOME/.config/env.d/common_env.sh"
 
 # File locations
 HISTFILE=$HOME/.cache/zhistory
@@ -93,10 +93,5 @@ bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey '^[[A' history-substring-search-up			
 bindkey '^[[B' history-substring-search-down
-
-# Removing pycache files
-pyclean () {
-    find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
-}
 
 figlet 'G U L U' | lolcat

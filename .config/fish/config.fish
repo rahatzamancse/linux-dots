@@ -6,7 +6,9 @@
 #   |_|_| |_|____/ \__,_|_| |_|\___|
 #                                 
 
-source $HOME/.profile
+if type -q bass
+  bass source ~/.config/env.d/common_env.sh
+end
 
 # Supresses fish's intro message
 set fish_greeting
@@ -53,5 +55,4 @@ if status --is-login
 end
 
 zoxide init --cmd cd fish | source
-
 pyenv init - | source
