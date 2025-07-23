@@ -22,6 +22,10 @@ mkdir -p $HOME/.linux-dots/.git
 dotfiles="/usr/bin/git --git-dir=$HOME/.linux-dots/.git --work-tree=$HOME"
 $dotfiles config --local status.showUntrackedFiles no
 
+# add tmux plugin manager
+mkdir -p $HOME/.tmux/plugins
+/usr/bin/git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+
 # Moving existing important rc files to a safe place
 affectedfiles=$($dotfiles ls-files -dm -- ~ | sort -u)
 [[ ! -z "$affectedfiles" ]] && cp -v $affectedfiles -t $HOME/rcbackup/
