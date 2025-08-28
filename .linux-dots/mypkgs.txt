@@ -89,6 +89,14 @@ stabilitymatrix
 starship
 sushi
 steam
+texlive-binextra
+texlive-basic
+texlive-latex
+texlive-latexrecommended
+texlive-fontsrecommended
+texlive-bibtexextra
+texlive-latexextra
+biber
 tailscale-systray-git
 tokei
 ttf-jetbrains-mono
