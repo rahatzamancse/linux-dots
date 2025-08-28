@@ -1,0 +1,188 @@
+# All the packages from pacman and AUR that I use.
+
+development:
+  description: "Development tools and environments"
+  packages:
+    - base-devel
+    - neovim
+    - cursor-bin
+    - git-nautilus-icons
+    - meld
+    - nodejs
+    - npm
+    - pnpm
+    - pyenv
+    - python-pynvim
+    - rustup
+    - hugo
+    - drawio-desktop
+
+shell_and_terminal:
+  description: "Shell enhancements and terminal utilities"
+  packages:
+    - fish
+    - bass-fish
+    - starship
+    - kitty
+    - warp-terminal
+    - bat
+    - lsd
+    - fd
+    - ripgrep
+    - fzf
+    - zoxide
+    - dust
+    - duf
+    - ncdu
+    - neofetch
+    - tokei
+    - figlet
+    - lolcat
+
+system_utilities:
+  description: "System management and monitoring tools"
+  packages:
+    - btrfs-assistant
+    - btrfs-progs
+    - snapper
+    - snapper-support
+    - snapper-tools
+    - snap-pac
+    - pacman-contrib
+    - plocate
+    - rsync
+    - sshfs
+    - nethogs
+    - mangohud
+
+compression_and_archives:
+  description: "Archive and compression utilities"
+  packages:
+    - p7zip
+    - lrzip
+    - unace
+    - unrar
+    - file-roller
+
+gnome_desktop:
+  description: "GNOME desktop environment and extensions"
+  packages:
+    - gnome-calendar
+    - gnome-clocks
+    - gnome-disk-utility
+    - gnome-online-accounts
+    - gnome-sound-recorder
+    - gnome-text-editor
+    - gnome-tweaks
+    - gnome-weather
+    - gnome-shell-extension-appindicator
+    - gnome-shell-extension-blur-my-shell
+    - gnome-shell-extension-just-perfection-desktop
+    - gnome-shell-extension-vitals
+    - gnome-shell-extension-weather-oclock
+    - dconf-editor
+    - variety
+
+nautilus_extensions:
+  description: "File manager enhancements"
+  packages:
+    - nautilus-checksums
+    - nautilus-compare
+    - nautilus-copy-path
+    - nautilus-open-any-terminal
+    - python-nautilus
+    - sushi
+
+multimedia:
+  description: "Media tools and codecs"
+  packages:
+    - mpv
+    - gthumb
+    - evince
+    - ffmpegthumbnailer
+    - gstreamer-meta
+    - mediainfo-gui
+    - yaru-sound-theme
+
+fonts:
+  description: "Fonts and typography"
+  packages:
+    - ttf-jetbrains-mono
+    - ttf-roboto
+    - ttf-ms-win11-auto
+    - nerd-fonts-complete-mono-glyphs
+
+virtualization_and_containers:
+  description: "Docker and container tools"
+  packages:
+    - docker
+    - docker-buildx
+    - docker-compose
+    - lazydocker
+    - nvidia-container-toolkit
+
+web_browsers:
+  description: "Web browsers"
+  packages:
+    - brave-bin
+    - google-chrome
+
+productivity:
+  description: "Office and productivity applications"
+  packages:
+    - wps-office
+    - qalculate-gtk
+    - zotero
+    - zoom
+    - flameshot
+
+latex_and_documentation:
+  description: "LaTeX and document processing"
+  packages:
+    - texlive-binextra
+    - texlive-basic
+    - texlive-latex
+    - texlive-latexrecommended
+    - texlive-fontsrecommended
+    - texlive-bibtexextra
+    - texlive-latexextra
+    - biber
+
+cloud_and_storage:
+  description: "Cloud storage and sync tools"
+  packages:
+    - pcloud-drive
+    - tailscale-systray-git
+
+file_system_support:
+  description: "Additional filesystem support"
+  packages:
+    - gvfs-dnssd
+    - gvfs-goa
+    - gvfs-google
+    - gvfs-onedrive
+
+gaming:
+  description: "Gaming platform"
+  packages:
+    - steam
+
+ai_and_machine_learning:
+  description: "AI and ML tools"
+  packages:
+    - stabilitymatrix
+
+system_utilities_gui:
+  description: "GUI system utilities"
+  packages:
+    - baobab
+    - bleachbit
+    - libappindicator-gtk3
+    - zenity
+    - flatpak
+    - fstrcmp
+
+network_tools:
+  description: "Network utilities"
+  packages:
+    - wget

@@ -26,8 +26,8 @@ alias putu="figlet 'Rahat'"
 alias rahat="figlet 'Putu'"
 alias fucking='sudo'
 alias ls=lsd
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.linux-dots/.git --work-tree=$HOME'
-/usr/bin/git --git-dir=$HOME/.linux-dots/.git --work-tree=$HOME config --local status.showUntrackedFiles no
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.github/.git --work-tree=$HOME'
+/usr/bin/git --git-dir=$HOME/.github/.git --work-tree=$HOME config --local status.showUntrackedFiles no
 alias rmpclock='sudo rm /var/lib/pacman/db.lck'
 alias diff=vimdiff
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'

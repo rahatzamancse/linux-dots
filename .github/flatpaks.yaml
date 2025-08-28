@@ -1,0 +1,44 @@
+# Flatpak Applications Configuration
+# Organized by category for better management
+
+communication:
+  description: "Communication and messaging apps"
+  packages:
+    - hu.irl.cameractrls  # Camera Controls
+    - com.discordapp.Discord  # Discord
+    - org.telegram.desktop  # Telegram
+    - com.slack.Slack  # Slack
+
+gaming:
+  description: "Gaming tools and utilities"
+  packages:
+    - com.vysp3r.ProtonPlus  # ProtonPlus
+    - com.github.Matoking.protontricks  # Protontricks
+    - com.steamgriddb.SGDBoop  # SGDBoop - Apply SteamGridDB assets to Steam
+
+system_utilities:
+  description: "System management and utility tools"
+  packages:
+    - com.flathub.Warehouse  # Warehouse (Flatpak manager)
+    - com.mattjakeman.ExtensionManager  # Extension Manager
+    - io.missioncenter.MissionCenter  # Mission Center
+    - com.flathub.Flatseal  # Flatseal
+    - it.mijorus.gearlever  # Gear Lever - Manage AppImages
+    - re.sonny.Junction  # Junction - Application chooser
+    - xyz.tytanium.DoorKnocker  # Door Knocker - Check portal availability
+
+productivity:
+  description: "Productivity and office applications"
+  packages:
+    - com.todoist.Todoist  # Todoist - Task manager
+    - org.gnome.gitlab.somas.Apostrophe  # Apostrophe - Markdown editor
+
+ai_tools:
+  description: "AI and machine learning applications"
+  packages:
+    - com.jeffser.Alpaca  # Alpaca - Chat with AI models
+
+remote_access:
+  description: "Remote access and control tools"
+  packages:
+    - com.anydesk.Anydesk  # AnyDesk - Remote desktop

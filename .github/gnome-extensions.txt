@@ -1,0 +1,12 @@
+foresight@pesader.dev
+user-theme@gnome-shell-extensions.gcampax.github.com
+docker@stickman_0x00.com
+pamac-updates@manjaro.org
+paperwm@paperwm.github.com
+appindicatorsupport@rgcjonas.gmail.com
+weatheroclock@CleoMenezesJr.github.io
+Vitals@CoreCoding.com
+pano@elhan.io
+just-perfection-desktop@just-perfection
+blur-my-shell@aunetx
+quick-settings-audio-panel@rayzeq.github.io

@@ -1,0 +1,332 @@
+#!/bin/bash
+
+### Installing script dependencies
+echo "📦 Installing script dependencies..."
+# base-devel to build from AUR
+sudo pacman -Sy --needed base-devel
+# make sure AUR package manager paru is installed
+if ! pacman -Qs paru > /dev/null ; then
+	echo "🛠️  Installing PARU AUR helper..."
+	git clone https://aur.archlinux.org/paru.git
+	cd paru
+	makepkg -si
+	cd ..
+	rm -rf paru
+fi
+
+### Adding Dotfile management functionality
+echo "⚙️  Setting up dotfile management..."
+# Backup Directory for existing files (That will be overwritten)
+mkdir -p $HOME/rcbackup
+[ -d $HOME/.github ] && mv $HOME/.github $HOME/rcbackup
+mkdir -p $HOME/.github/.git
+/usr/bin/git clone https://github.com/rahatzamancse/linux-dots.git --bare $HOME/.github/.git
+dotfiles="/usr/bin/git --git-dir=$HOME/.github/.git --work-tree=$HOME"
+$dotfiles config --local status.showUntrackedFiles no
+
+# add tmux plugin manager
+mkdir -p $HOME/.tmux/plugins
+/usr/bin/git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+
+# Moving existing important rc files to a safe place
+affectedfiles=$($dotfiles ls-files -dm -- ~ | sort -u)
+[[ ! -z "$affectedfiles" ]] && cp -v $affectedfiles -t $HOME/rcbackup/
+[ -f $HOME/.zshrc ] && mv $HOME/.zshrc $HOME/rcbackup/
+
+# Installing required tools
+echo "📦 Installing required dependencies..."
+paru -S --needed zenity yq flatpak
+
+# Home configs go brrrr...
+$dotfiles checkout -f
+
+### Removing Bloats
+echo "🧹 Scanning for bloat packages..."
+bloats=(
+    $(cat $HOME/.github/bloats.txt)
+)
+
+expkgs=($(
+    comm -23 \
+        <(pacman -Qqt | sort) \
+        <(echo base | tr ' ' '\n' | cat <(pacman -Sqg base-devel) - | sort -u)
+))
+
+detectedbloatpkgs=($(
+    comm -12 \
+        <(echo ${expkgs[@]} | tr ' ' '\n' | sort -u) \
+        <(echo ${bloats[@]} | tr ' ' '\n' | sort -u)
+))
+
+if [ ${#detectedbloatpkgs[@]} -eq 0 ]; then
+    echo "✅ Great! Your system is already bloat-free!"
+else
+    rmpkgs=$(
+        zenity --list --checklist \
+            --title "Remove bloat packages" \
+            --text "Select the bloat packages to remove" \
+            --column "" --column "Package" \
+            True $(echo ${detectedbloatpkgs[@]} | sed 's/ / True /g')
+    )
+    rmpkgs=${rmpkgs//|/ }
+
+    if [ ${#rmpkgs[@]} -eq 0 ]; then
+        echo "ℹ️  No packages selected for removal."
+    else
+        sudo pacman -Rs $rmpkgs
+    fi
+fi
+
+### Installing My Packages
+echo "📥 Loading your favorite packages..."
+
+# Function to parse YAML and extract packages by category using yq
+parse_packages() {
+    local config_file="$HOME/.github/mypkgs.yaml"
+    
+    if [[ ! -f "$config_file" ]]; then
+        echo "ℹ️  Package configuration file not found: $config_file"
+        return 1
+    fi
+    
+    # Check if yq is available
+    if ! command -v yq &> /dev/null; then
+        echo "❌ Error: yq is not installed. Please install it first."
+        return 1
+    fi
+    
+    # Extract all category names using yq
+    local categories=()
+    local category_list
+    category_list=$(yq 'keys[]' "$config_file" 2>/dev/null | tr -d '"')
+    
+    if [[ -z "$category_list" ]]; then
+        echo "ℹ️  No categories found in configuration file."
+        return 1
+    fi
+    
+    # Build categories array with descriptions
+    while IFS= read -r category; do
+        if [[ -n "$category" ]]; then
+            local description
+            description=$(yq ".${category}.description" "$config_file" 2>/dev/null | tr -d '"')
+            categories+=("$category:$description")
+        fi
+    done <<< "$category_list"
+    
+    # Show category selection dialog
+    if [ ${#categories[@]} -gt 0 ]; then
+        local zenity_args=()
+        for cat_desc in "${categories[@]}"; do
+            IFS=':' read -r cat desc <<< "$cat_desc"
+            zenity_args+=("True" "$cat" "$desc")
+        done
+        
+        selected_categories=$(
+            zenity --list --checklist \
+                --title "Select Package Categories" \
+                --text "Choose which categories of packages to install:" \
+                --column "" --column "Category" --column "Description" \
+                --width 900 --height 600 \
+                "${zenity_args[@]}"
+        )
+        
+        if [[ -n "$selected_categories" ]]; then
+            # Parse selected categories and extract their packages
+            IFS='|' read -ra SELECTED <<< "$selected_categories"
+            local selected_packages=()
+            
+            for selected_cat in "${SELECTED[@]}"; do
+                # Get packages for this category using yq
+                local category_packages
+                category_packages=$(yq ".${selected_cat}.packages[]" "$config_file" 2>/dev/null | tr -d '"')
+                
+                if [[ -n "$category_packages" ]]; then
+                    while IFS= read -r package; do
+                        if [[ -n "$package" ]]; then
+                            selected_packages+=("$package")
+                        fi
+                    done <<< "$category_packages"
+                fi
+            done
+            
+            # Remove duplicates and sort
+            if [ ${#selected_packages[@]} -gt 0 ]; then
+                # Remove duplicates using associative array
+                declare -A unique_packages
+                for pkg in "${selected_packages[@]}"; do
+                    unique_packages["$pkg"]=1
+                done
+                selected_packages=($(printf '%s\n' "${!unique_packages[@]}" | sort))
+                
+                # Show package selection dialog
+                installmypkgs=$(
+                    zenity --list --checklist \
+                        --title "Install Packages" \
+                        --text "Select specific packages to install from chosen categories:" \
+                        --column "" --column "Package" \
+                        --width 600 --height 700 \
+                        $(printf "True %s " "${selected_packages[@]}")
+                )
+                installmypkgs=${installmypkgs//|/ }
+                
+                if [[ -n "$installmypkgs" ]]; then
+                    echo "🚀 Processing selected packages..."
+                    paru -S --needed ${installmypkgs[@]}
+                else
+                    echo "ℹ️  No packages selected for installation."
+                fi
+            else
+                echo "ℹ️  No packages found in selected categories."
+            fi
+        else
+            echo "ℹ️  No categories selected for installation."
+        fi
+    else
+        echo "ℹ️  No package categories found in configuration file."
+    fi
+}
+
+# Call the package parsing function
+parse_packages
+
+### Installing Flatpak Applications
+echo "📦 Setting up Flatpak applications..."
+
+# Function to parse Flatpak YAML and install applications
+parse_flatpaks() {
+    local config_file="$HOME/.github/flatpaks.yaml"
+    
+    if [[ ! -f "$config_file" ]]; then
+        echo "ℹ️  Flatpak configuration file not found: $config_file"
+        return 1
+    fi
+    
+    # Check if flatpak is available
+    if ! command -v flatpak &> /dev/null; then
+        echo "📦 Installing Flatpak..."
+        paru -S --needed flatpak
+        
+        # Add Flathub repository
+        echo "🌐 Adding Flathub repository..."
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    fi
+    
+    # Check if yq is available (should already be installed)
+    if ! command -v yq &> /dev/null; then
+        echo "❌ Error: yq is not installed. Please install it first."
+        return 1
+    fi
+    
+    # Extract all category names using yq
+    local categories=()
+    local category_list
+    category_list=$(yq 'keys[]' "$config_file" 2>/dev/null | tr -d '"')
+    
+    if [[ -z "$category_list" ]]; then
+        echo "ℹ️  No Flatpak categories found in configuration file."
+        return 1
+    fi
+    
+    # Build categories array with descriptions
+    while IFS= read -r category; do
+        if [[ -n "$category" ]]; then
+            local description
+            description=$(yq ".${category}.description" "$config_file" 2>/dev/null | tr -d '"')
+            categories+=("$category:$description")
+        fi
+    done <<< "$category_list"
+    
+    # Show category selection dialog
+    if [ ${#categories[@]} -gt 0 ]; then
+        local zenity_args=()
+        for cat_desc in "${categories[@]}"; do
+            IFS=':' read -r cat desc <<< "$cat_desc"
+            zenity_args+=("True" "$cat" "$desc")
+        done
+        
+        selected_categories=$(
+            zenity --list --checklist \
+                --title "Select Flatpak Categories" \
+                --text "Choose which categories of Flatpak applications to install:" \
+                --column "" --column "Category" --column "Description" \
+                --width 900 --height 500 \
+                "${zenity_args[@]}"
+        )
+        
+        if [[ -n "$selected_categories" ]]; then
+            # Parse selected categories and extract their packages
+            IFS='|' read -ra SELECTED <<< "$selected_categories"
+            local selected_flatpaks=()
+            
+            for selected_cat in "${SELECTED[@]}"; do
+                # Get packages for this category using yq
+                local category_packages
+                category_packages=$(yq ".${selected_cat}.packages[]" "$config_file" 2>/dev/null | sed 's/#.*//' | tr -d '"' | xargs)
+                
+                if [[ -n "$category_packages" ]]; then
+                    while IFS= read -r package; do
+                        if [[ -n "$package" ]]; then
+                            selected_flatpaks+=("$package")
+                        fi
+                    done <<< "$category_packages"
+                fi
+            done
+            
+            # Remove duplicates and sort
+            if [ ${#selected_flatpaks[@]} -gt 0 ]; then
+                # Remove duplicates using associative array
+                declare -A unique_flatpaks
+                for pkg in "${selected_flatpaks[@]}"; do
+                    unique_flatpaks["$pkg"]=1
+                done
+                selected_flatpaks=($(printf '%s\n' "${!unique_flatpaks[@]}" | sort))
+                
+                # Show package selection dialog
+                install_flatpaks=$(
+                    zenity --list --checklist \
+                        --title "Install Flatpak Applications" \
+                        --text "Select specific Flatpak applications to install:" \
+                        --column "" --column "Application ID" \
+                        --width 700 --height 600 \
+                        $(printf "True %s " "${selected_flatpaks[@]}")
+                )
+                install_flatpaks=${install_flatpaks//|/ }
+                
+                if [[ -n "$install_flatpaks" ]]; then
+                    echo "🚀 Processing selected Flatpak applications..."
+                    for flatpak_id in ${install_flatpaks[@]}; do
+                        # Check if the application is already installed
+                        if flatpak list --app | awk '{print $2}' | grep -q "^$flatpak_id$"; then
+                            echo "✅ $flatpak_id is already installed, skipping..."
+                        else
+                            echo "📦 Installing $flatpak_id..."
+                            flatpak install -y flathub "$flatpak_id"
+                        fi
+                    done
+                else
+                    echo "ℹ️  No Flatpak applications selected for installation."
+                fi
+            else
+                echo "ℹ️  No Flatpak applications found in selected categories."
+            fi
+        else
+            echo "ℹ️  No Flatpak categories selected for installation."
+        fi
+    else
+        echo "ℹ️  No Flatpak categories found in configuration file."
+    fi
+}
+
+# Call the Flatpak parsing function
+parse_flatpaks
+
+### Removing Orphan packages
+echo "🔍 Checking for orphaned packages..."
+if [[ $(pacman -Qtdq) ]]; then
+    sudo pacman -Rns $(pacman -Qtdq)
+else
+    echo "✅ No orphaned packages found - system is clean!"
+fi
+
+echo "🔄 Setup complete! Please reboot your machine to apply all changes."
