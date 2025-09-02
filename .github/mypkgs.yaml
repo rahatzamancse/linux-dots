@@ -1,7 +1,7 @@
 # All the packages from pacman and AUR that I use.
 
-development:
-  description: "Development tools and environments"
+must_have:
+  description: "Programs I want in all my applications"
   packages:
     - base-devel
     - neovim
@@ -16,9 +16,10 @@ development:
     - rustup
     - hugo
     - drawio-desktop
+    - xdg-terminal-exec
 
-shell_and_terminal:
-  description: "Shell enhancements and terminal utilities"
+laptop:
+  description: "Programs I want in my laptop"
   packages:
     - fish
     - bass-fish
@@ -39,8 +40,8 @@ shell_and_terminal:
     - figlet
     - lolcat
 
-system_utilities:
-  description: "System management and monitoring tools"
+server:
+  description: "Programs I want on a display less server"
   packages:
     - btrfs-assistant
     - btrfs-progs

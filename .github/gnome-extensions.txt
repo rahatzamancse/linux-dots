@@ -10,3 +10,4 @@ pano@elhan.io
 just-perfection-desktop@just-perfection
 blur-my-shell@aunetx
 quick-settings-audio-panel@rayzeq.github.io
+GNOME Fuzzy App Search
