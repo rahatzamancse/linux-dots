@@ -9,8 +9,8 @@
 {
   "agent": {
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-4o"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
     }
   },
   "icon_theme": "Material Icon Theme",

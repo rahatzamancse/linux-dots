@@ -1,0 +1,137 @@
+{
+	"actions": [
+		{
+			"name": "Open",
+			"actions": [
+				{
+					"kind": "command",
+					"id": "open-with-default",
+					"name": "Open with Default",
+					"pattern": null,
+					"types": [
+						"Image",
+						"File"
+					],
+					"command": "xargs xdg-open",
+					"output": "ignore",
+					"shortcut": []
+				},
+				{
+					"kind": "command",
+					"id": "open-with-files",
+					"name": "Open with Files",
+					"pattern": "^(.*)",
+					"types": [
+						"Image",
+						"File",
+						"Files"
+					],
+					"command": "nautilus -s $1",
+					"output": "ignore",
+					"shortcut": []
+				},
+				{
+					"kind": "command",
+					"id": "open-with-browser",
+					"name": "Open with Browser",
+					"pattern": null,
+					"types": [
+						"Link"
+					],
+					"command": "xargs xdg-open",
+					"output": "ignore",
+					"shortcut": []
+				}
+			]
+		},
+		{
+			"kind": "command",
+			"id": "paste-as-path",
+			"name": "Paste as Path",
+			"pattern": null,
+			"types": [
+				"Image",
+				"File",
+				"Files"
+			],
+			"command": "cut -c8-",
+			"output": "paste",
+			"shortcut": []
+		},
+		{
+			"name": "Convert",
+			"actions": [
+				{
+					"kind": "color",
+					"id": "rgb",
+					"name": "Rgb",
+					"pattern": "^(?!rgb)",
+					"types": [
+						"Color"
+					],
+					"space": "rgb",
+					"output": "paste",
+					"shortcut": []
+				},
+				{
+					"kind": "color",
+					"id": "hex",
+					"name": "Hex",
+					"pattern": "^(?!#)",
+					"types": [
+						"Color"
+					],
+					"space": "hex",
+					"output": "paste",
+					"shortcut": []
+				},
+				{
+					"kind": "color",
+					"id": "hsl",
+					"name": "Hsl",
+					"pattern": "^(?!hsl)",
+					"types": [
+						"Color"
+					],
+					"space": "hsl",
+					"output": "paste",
+					"shortcut": []
+				},
+				{
+					"kind": "color",
+					"id": "oklch",
+					"name": "Oklch",
+					"pattern": "^(?!oklch)",
+					"types": [
+						"Color"
+					],
+					"space": "oklch",
+					"output": "paste",
+					"shortcut": []
+				}
+			]
+		},
+		{
+			"kind": "qrcode",
+			"id": "qrcode",
+			"name": "QR Code",
+			"pattern": null,
+			"types": [
+				"Text",
+				"Code",
+				"Link",
+				"Character",
+				"Color"
+			],
+			"output": "ignore",
+			"shortcut": [
+				"<Control>q"
+			]
+		}
+	],
+	"defaults": {
+		"File": "paste-as-path",
+		"Files": "paste-as-path",
+		"Link": "open-with-browser"
+	}
+}
