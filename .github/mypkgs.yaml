@@ -17,6 +17,7 @@ must_have:
     - hugo
     - drawio-desktop
     - xdg-terminal-exec
+    - gum
 
 laptop:
   description: "Programs I want in my laptop"
