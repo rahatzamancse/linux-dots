@@ -39,7 +39,7 @@ function git_fork_divergence
 
     gum style --border rounded --padding "1 2" --margin "0 0 1 0" \
         --foreground 212 --border-foreground 212 \
-        "🐙 Fork Divergence (streaming)" \
+        "🐙 Fork Divergence" \
         "" \
         "$owner/$repo"
 

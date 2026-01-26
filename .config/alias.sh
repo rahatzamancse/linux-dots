@@ -44,7 +44,10 @@ alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true 
 alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 alias docker_clean_all='docker kill $(docker ps -q) && docker_clean_ps && docker rmi $(docker images -a -q)'
 alias docker_prune_all='docker system prune -a -f'
-alias pyclean="find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete"
+alias pyclean="find . \
+  \( -name '__pycache__' -o -name '*.pyc' -o -name '*.pyo' -o -name '.venv' \) \
+  -prune -exec rm -rf {} +"
+
 
 # pass management
 alias passlist="rbw list"
