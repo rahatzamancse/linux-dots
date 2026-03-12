@@ -6,7 +6,13 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
-    gpus: all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: ["gpu"]
     restart: unless-stopped
 
 volumes:
