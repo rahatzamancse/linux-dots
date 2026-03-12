@@ -17,5 +17,7 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export LESSHISTFILE=$HOME/.cache/lesshst
 
+export TERM=xterm-256color
+
 [ -f "$HOME/.config/secrets.sh" ] && source "$HOME/.config/secrets.sh"
 [ -f "$HOME/.config/alias.sh" ] && source "$HOME/.config/alias.sh"

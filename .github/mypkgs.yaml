@@ -25,8 +25,7 @@ laptop:
     - fish
     - bass-fish
     - starship
-    - kitty
-    - warp-terminal
+    - blackbox
     - bat
     - lsd
     - fd
@@ -105,6 +104,7 @@ multimedia:
     - gstreamer-meta
     - mediainfo-gui
     - yaru-sound-theme
+    - wiremix
 
 fonts:
   description: "Fonts and typography"

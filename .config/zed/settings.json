@@ -9,8 +9,10 @@
 {
   "agent": {
     "default_model": {
+      "effort": "high",
+      "enable_thinking": true,
       "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "model": "claude-sonnet-4-6"
     }
   },
   "icon_theme": "Material Icon Theme",
