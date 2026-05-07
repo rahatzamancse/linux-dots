@@ -18,6 +18,7 @@ must_have:
     - drawio-desktop
     - xdg-terminal-exec
     - gum
+    - wl-clipboard
 
 laptop:
   description: "Programs I want in my laptop"

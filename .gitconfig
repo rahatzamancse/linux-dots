@@ -1,0 +1,20 @@
+[user]
+	name = Rahat Zaman
+	email = rahatzamancse@gmail.com
+	signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDIUPZ5/jQPzt63sH+I4IWSaAaTo1cAzFHF6cPNsl4PB rahatzamancse@gmail.com
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
+[difftool "meld"]
+	cmd = meld "$LOCAL" "$REMOTE"
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+
+
+[includeIf "gitdir:~/prapti/"]
+    path = ~/prapti/.gitconfig
