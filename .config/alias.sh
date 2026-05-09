@@ -53,3 +53,7 @@ alias pyclean="find . \
 alias passlist="rbw list"
 alias passsearch="rbw list | grep -i"
 alias passadd="rbw add"
+
+alias infi_personal="infisical run --projectId=237a2bbe-5451-4767-a62b-e5fd40cd3c71 --env=personal --"
+alias infi_rosen="infisical run --projectId=237a2bbe-5451-4767-a62b-e5fd40cd3c71 --env=rosen --"
+alias infi_salesforce="infisical run --projectId=237a2bbe-5451-4767-a62b-e5fd40cd3c71 --env=salesforce --"

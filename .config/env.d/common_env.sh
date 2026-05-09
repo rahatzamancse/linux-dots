@@ -19,7 +19,6 @@ export LESSHISTFILE=$HOME/.cache/lesshst
 
 export TERM=xterm-256color
 
-[ -f "$HOME/.config/secrets.sh" ] && source "$HOME/.config/secrets.sh"
 [ -f "$HOME/.config/alias.sh" ] && source "$HOME/.config/alias.sh"
 
 export SSH_AUTH_SOCK=/home/insane/.bitwarden-ssh-agent.sock
